@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/takeOut/takeOut",
+    "pages/order/order",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#009dfe",
+    "navigationBarTitleText": "美食汇",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "static/image/elm.png",
+        "iconPath": "static/image/elmg.png",
+        "pagePath": "pages/index/index",
+        "text": "外卖"
+      },
+      {
+        "selectedIconPath": "static/image/order.png",
+        "iconPath": "static/image/orderg.png",
+        "pagePath": "pages/order/order",
+        "text": "订单"
+      },
+      {
+        "selectedIconPath": "static/image/my.png",
+        "iconPath": "static/image/myg.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

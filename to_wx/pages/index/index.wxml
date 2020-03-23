@@ -1,0 +1,93 @@
+<!--index.wxml-->
+<scroll-view scroll-y="true" class="containers">
+  <view class="header">
+    <image class="h-img" src="/static/image/address.png"></image>
+    <view class="h-text">松泽家园四区</view>
+    <image class="h-img2" src="/static/image/down.png"></image>
+  </view>
+  <view class="clear"></view>
+  <view class="sec">
+    <input  class="wi-input" maxlength="15" placeholder="     搜索商家、商品名称" />
+  </view>
+  <view class="ftype">
+    <view class="ft-block" wx:for="{{foodType}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+      <image class="ft-img" src="{{item.imgPath}}"></image>
+      <view class="ft-text">{{item.name}}</view>
+    </view>
+  </view>
+  <view>
+    <image src="/static/image/ads.jpg" class="adsimg"></image>
+  </view>
+  <view>
+    <view class="jtext">推荐商家</view>
+    <view class="stype">
+      <view wx:for="{{storeType}}" wx:for-index="index" wx:key="index" class="stype-block">   
+        {{item.name}}
+      </view>
+    </view>
+    <scroll-view>
+        <view class="st-view">
+          <view class="v-left">
+            <image src="/static/image/food1.jpg"></image>
+          </view>
+          <view class="v-right">
+            <view class="v-text1">好再来超市</view>
+            <view class="v-text2"><text class="v2-t">★4.4</text> 月售79</view>
+            <view class="v-flex">
+              <view class="v-text2">起送¥39 配送¥5</view>
+              <view class="v-text2">42分钟 4.1km</view>
+            </view>
+            <view class="v-flex2">
+              <text class="vf2b">满15减20</text>
+              <text class="vf2b leftv">满15减20</text>
+              <text class="vf2b leftv">满15减20</text>
+            </view>
+          </view>
+        </view>
+    
+
+
+        <view class="st-view">
+          <view class="v-left">
+            <image src="/static/image/store.jpg"></image>
+          </view>
+          <view class="v-right">
+            <view class="v-text1">好再来超市</view>
+            <view class="v-text2"><text class="v2-t">★4.4</text> 月售79</view>
+            <view class="v-flex">
+              <view class="v-text2">起送¥39 配送¥5</view>
+              <view class="v-text2">42分钟 4.1km</view>
+            </view>
+            <view class="v-flex2">
+              <text class="vf2b">满15减20</text>
+              <text class="vf2b leftv">满15减20</text>
+              <text class="vf2b leftv">满15减20</text>
+            </view>
+          </view>
+        </view>
+     
+
+
+        <view class="st-view">
+          <view class="v-left">
+            <image src="/static/image/food1.jpg"></image>
+          </view>
+          <view class="v-right">
+            <view class="v-text1">好再来超市</view>
+            <view class="v-text2"><text class="v2-t">★4.4</text> 月售79</view>
+            <view class="v-flex">
+              <view class="v-text2">起送¥39 配送¥5</view>
+              <view class="v-text2">42分钟 4.1km</view>
+            </view>
+            <view class="v-flex2">
+              <text class="vf2b">满15减20</text>
+              <text class="vf2b leftv">满15减20</text>
+              <text class="vf2b leftv">满15减20</text>
+            </view>
+          </view>
+        </view>
+  
+    </scroll-view>
+  </view>
+</scroll-view>
+ 

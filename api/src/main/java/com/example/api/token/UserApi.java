@@ -11,6 +11,7 @@ public class UserApi {
     private GetToken tokenService = new GetToken();
     //登录
     @PostMapping("/login")
+    @PassToken
     public Object login(@RequestBody TokenUser user){
         JSONObject jsonObject=new JSONObject();
         TokenUser userForBase=new TokenUser("2","张三","123456");
