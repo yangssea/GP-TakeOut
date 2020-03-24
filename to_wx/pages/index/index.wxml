@@ -1,9 +1,9 @@
 <!--index.wxml-->
 <scroll-view scroll-y="true" class="containers">
   <view class="header">
-    <image class="h-img" src="/static/image/address.png"></image>
+    <image class="h-img" src="{{imgPath+'address.png'}}"></image>
     <view class="h-text">松泽家园四区</view>
-    <image class="h-img2" src="/static/image/down.png"></image>
+    <image class="h-img2" src="{{imgPath}}down.png"></image>
   </view>
   <view class="clear"></view>
   <view class="sec">
@@ -16,7 +16,7 @@
     </view>
   </view>
   <view>
-    <image src="/static/image/ads.jpg" class="adsimg"></image>
+    <image src="{{imgPath}}ads.jpg" class="adsimg"></image>
   </view>
   <view>
     <view class="jtext">推荐商家</view>
@@ -28,7 +28,7 @@
     <scroll-view>
         <view class="st-view">
           <view class="v-left">
-            <image src="/static/image/food1.jpg"></image>
+            <image src="{{imgPath}}food1.jpg"></image>
           </view>
           <view class="v-right">
             <view class="v-text1">好再来超市</view>
@@ -49,7 +49,7 @@
 
         <view class="st-view">
           <view class="v-left">
-            <image src="/static/image/store.jpg"></image>
+            <image src="{{imgPath}}store.jpg"></image>
           </view>
           <view class="v-right">
             <view class="v-text1">好再来超市</view>
@@ -70,7 +70,7 @@
 
         <view class="st-view">
           <view class="v-left">
-            <image src="/static/image/food1.jpg"></image>
+            <image src="{{imgPath}}food1.jpg"></image>
           </view>
           <view class="v-right">
             <view class="v-text1">好再来超市</view>

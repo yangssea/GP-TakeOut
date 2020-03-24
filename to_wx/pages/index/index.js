@@ -1,42 +1,43 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+const imgUrl =app.globalData.imgUrl;
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    imgPath: imgUrl,
     foodType: [{
-      imgPath: "/static/image/s1.png",
+      imgPath: imgUrl+"s1.png",
       name: "美食"
     }, {
-        imgPath: "/static/image/s2.png",
+        imgPath: imgUrl +"s2.png",
         name: "超市便利"
     }, {
-        imgPath: "/static/image/s3.png",
+        imgPath: imgUrl +"s3.png",
         name: "水果"
     }, {
-        imgPath: "/static/image/s4.png",
+        imgPath: imgUrl +"s4.png",
         name: "晚餐"
     }, {
-        imgPath: "/static/image/s5.png",
+        imgPath: imgUrl +"s5.png",
         name: "汉堡披萨"
     }, {
-        imgPath: "/static/image/s6.png",
+        imgPath: imgUrl +"s6.png",
         name: "速食简餐"
     }, {
-        imgPath: "/static/image/s7.png",
+        imgPath: imgUrl +"s7.png",
         name: "买菜"
     }, {
-        imgPath: "/static/image/s8.png",
+        imgPath: imgUrl +"s8.png",
         name: "大牌惠吃"
     }, {
-        imgPath: "/static/image/s9.png",
+        imgPath: imgUrl +"s9.png",
         name: "炸鸡烤串"
     }, {
-        imgPath: "/static/image/s10.png",
+        imgPath: imgUrl +"s10.png",
       name: "包子粥店"
     }],
     storeType: [{

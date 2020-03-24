@@ -33,6 +33,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    imgUrl: 'http://139.159.191.153:8080/image/'
   }
 })
