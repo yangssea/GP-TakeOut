@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/order/order",
     "pages/storeFInd/index",
     "pages/index/index",
-    "pages/order/order",
     "pages/my/my"
   ],
   "window": {

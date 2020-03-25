@@ -1,2 +1,80 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<scroll-view class="containers">
+  <view class="block">
+    <view class="o-block">
+      <image class="ob-left" src="{{imgUrl}}fd1.jpg"></image>
+      <view class="ob-right">
+        <view class="ob1-left">
+          华莱士-全集汉堡（1）
+        </view>
+        <view class="ob1-right">
+          订单已送达
+        </view>
+        <view style="clear:both;"></view>
+        <view class="ob-time">
+          2020-04-01 20:30
+        </view>
+        <view class="ob-tc">超值单人餐</view> 
+        <view class="ob-price">￥22.7</view> 
+      </view>
+      <view style="clear:both;"></view>
+      <view class="o-late">
+        <view class="ob-late">
+          再来一单
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="block">
+    <view class="o-block">
+      <image class="ob-left" src="{{imgUrl}}fd1.jpg"></image>
+      <view class="ob-right">
+        <view class="ob1-left">
+          华莱士-全集汉堡（1）
+        </view>
+        <view class="ob1-right">
+          订单已送达
+        </view>
+        <view style="clear:both;"></view>
+        <view class="ob-time">
+          2020-04-01 20:30
+        </view>
+        <view class="ob-tc">超值单人餐</view> 
+        <view class="ob-price">￥22.7</view> 
+      </view>
+      <view style="clear:both;"></view>
+      <view class="o-late">
+        <view class="ob-late">
+          再来一单
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="block">
+    <view class="o-block">
+      <image class="ob-left" src="{{imgUrl}}fd1.jpg"></image>
+      <view class="ob-right">
+        <view class="ob1-left">
+          华莱士-全集汉堡（1）
+        </view>
+        <view class="ob1-right">
+          订单已送达
+        </view>
+        <view style="clear:both;"></view>
+        <view class="ob-time">
+          2020-04-01 20:30
+        </view>
+        <view class="ob-tc">超值单人餐</view> 
+        <view class="ob-price">￥22.7</view> 
+      </view>
+      <view style="clear:both;"></view>
+      <view class="o-late">
+        <view class="ob-late">
+          再来一单
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

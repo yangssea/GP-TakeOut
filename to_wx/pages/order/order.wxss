@@ -1,1 +1,71 @@
 /* pages/order/order.wxss */
+.o-block{
+  margin: 0.5rem;
+  padding-top: 1rem; 
+}
+.ob-left{
+  width: 2.5rem;
+  height: 2.5rem;
+  float: left
+}
+.ob-right{
+  float: left;
+   width: 85%;
+}
+.ob1-left{
+  float: left;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+.ob1-right{
+  float: right;
+  font-size: 0.8rem; 
+  margin-left: 0.5rem;
+  margin-top: 0.2rem;
+}
+.ob-time{
+  font-size: 0.5rem;
+  margin-left: 0.5rem;
+  color: gray;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid #f7f7f7;
+}
+.ob-tc{
+  font-size: 0.8rem;
+  color: grey; 
+  float: left;
+  padding-left: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.ob-price{
+  font-size: 0.8rem;
+  font-weight: 600;
+  float: right;
+  padding: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.o-late{
+  border-top: 1px solid #f7f7f7;
+}
+.ob-late{
+  width: 3rem;
+  height: 1rem;
+  padding: 0.3rem;
+  font-size: 0.6rem;
+  float: right;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.2rem;
+  color: #009dfe;
+  border: 1px solid #009dfe;
+}
+.block{
+  background: white;
+  height: 9.5rem;
+  border-radius: 0.3rem;
+}
+.containers{
+  background: #f7f7f7;
+}
