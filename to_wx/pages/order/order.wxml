@@ -2,7 +2,7 @@
 <scroll-view class="containers">
   <view class="block">
     <view class="o-block">
-      <image class="ob-left" src="{{imgUrl}}fd1.jpg"></image>
+      <image class="ob-left" src="{{imgUrl}}store.jpg"></image>
       <view class="ob-right">
         <view class="ob1-left">
           华莱士-全集汉堡（1）

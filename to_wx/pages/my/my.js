@@ -1,11 +1,30 @@
 // pages/my/my.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    imgUrl: app.globalData.imgUrl,
+    myList: [{
+        name:'我的地址',
+        path: 'mlist3.png',
+      }, {
+        name: '我的收藏',
+        path: 'mlist2.png',
+      }, {
+        name: '我的客服',
+        path: 'mlist1.png',
+      }, {
+        name: '我的推荐',
+        path: 'mlist1.png',
+      }, {
+        name: '规则中心',
+        path: 'mlist4.png',
+      },
+    ]
   },
 
   /**
