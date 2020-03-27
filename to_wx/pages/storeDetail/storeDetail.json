@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+      "wux-cell-group": "../../static/lib/cell-group/index",
+      "wux-cell": "../../static/lib/cell/index"
+  }
 }

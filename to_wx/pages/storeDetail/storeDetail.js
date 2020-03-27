@@ -10,18 +10,21 @@ Page({
      imgUrl: app.globalData.imgUrl,
      a1: true,
      a2: false,
-     a3: false
+     a3: false,
+     aview:true,
+     bview: false,
+     cview: false
   },
   btn: function(event){
     var index = event.currentTarget.dataset.gid;
     if(index===1){
-      this.setData({ a1: true, a2: false, a3: false });
+      this.setData({ a1: true, a2: false, a3: false, aview: true, bview: false, cview: false,});
     }
     if (index === 2) {
-      this.setData({ a1: false, a2: true, a3: false });  
+      this.setData({ a1: false, a2: true, a3: false, aview: false, bview: true, cview: false});  
     }
     if (index === 3) {
-      this.setData({ a1: false, a2: false, a3: true }); 
+      this.setData({ a1: false, a2: false, a3: true, aview: false, bview: false, cview: true }); 
     }
   },
   /**
