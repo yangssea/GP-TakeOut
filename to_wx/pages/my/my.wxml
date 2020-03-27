@@ -7,7 +7,8 @@
     </view>
     <view class="h-right">
       <image src="{{imgUrl}}tx.png"></image>
-    </view>
+    </view
+    >
   </view>
   <view class="model">
     <view class="m-left">
@@ -21,7 +22,7 @@
         <text style="font-size:0.6rem;color:gray;">个未使用</text>
       </view>
     </view>
-    <view class="m-right"> 
+    <view class="m-right">
       <view class="ml-b">
           <view>余额</view>
          <image src="{{imgUrl}}hd2.png"></image>

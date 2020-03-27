@@ -1,0 +1,56 @@
+<!--pages/storeDetail/storeDetail.wxml-->
+<scroll-view>
+  <view class="header">
+    <image src="{{imgUrl}}tx.png"></image>
+  </view>
+  <view class="h-last">
+    <view class="title">肯德基宅急送（园区车缝... </view>
+    <view class="sdetail">评价4.4 月售138单 商家配送30分钟</view>
+    <view class="sdetail " style="color:gray">
+    公告：本店全部商品已经消毒，配送人员佩戴口罩
+    </view>
+  </view>
+  <view class="navbar">
+    <view data-gid='{{1}}' bindtap="btn" class="{{a1?'click':''}}">
+     点餐     
+    </view>
+    <view data-gid='{{2}}' bindtap="btn" class="{{a2?'click':''}}">
+      评价
+    </view>
+    <view data-gid='{{3}}' bindtap="btn" class="{{a3?'click':''}}">
+      商家
+    </view>
+  </view>
+
+  <view class="foods">
+    <image class="adsimg" src="{{imgUrl}}ads.jpg"></image>
+    <scroll-view class="scroll-left">
+     <view class="sl-view cover-sv">
+        小分鸡排
+      </view>
+      <view class="sl-view" wx:for="{{3}}">
+        小分鸡排
+      </view>
+    </scroll-view>
+    <scroll-view class="scroll-right">
+      <view class="st-view" wx:for="{{6}}">
+          <view class="v-left">
+            <image src="{{imgUrl}}fd3.jpg"></image>
+          </view>
+          <view class="v-right">
+            <view class="v-text1">好再来超市</view>
+            <view class="v-text2">主要原料：鸡肉</view>
+            <view class="v-flex">
+              <view class="v-text2">月售644份 好评率100%</view>
+            </view>
+             <view class="vsp">
+              <view class="vp">￥20.9起</view>
+              <image class="vpimg" src="{{imgUrl}}add.png"></image>
+             </view>
+          </view>
+        </view>
+    </scroll-view>
+     <view class="bottom-v">
+    </view>
+  </view>
+</scroll-view>

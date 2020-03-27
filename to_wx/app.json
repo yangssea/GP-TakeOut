@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/storeDetail/storeDetail",
+    "pages/index/index",
+    "pages/storeFInd/index",
     "pages/my/my",
     "pages/oDetail/oDetail",
-    "pages/order/order",
-    "pages/storeFInd/index",
-    "pages/index/index"
+    "pages/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",
