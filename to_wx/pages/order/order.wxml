@@ -1,7 +1,7 @@
 <!--pages/order/order.wxml-->
 <scroll-view class="containers">
   <view class="block">
-    <view class="o-block">
+    <view class="o-block"  bindtap="goLink">
       <image class="ob-left" src="{{imgUrl}}store.jpg"></image>
       <view class="ob-right">
         <view class="ob1-left">

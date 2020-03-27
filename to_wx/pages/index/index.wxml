@@ -7,7 +7,7 @@
   </view>
   <view class="clear"></view>
   <view class="sec">
-    <input  class="wi-input" maxlength="15" placeholder="     搜索商家、商品名称" />
+    <input bindtap="goLink1"  class="wi-input" maxlength="15" placeholder="     搜索商家、商品名称" />
   </view>
   <view class="ftype">
     <view class="ft-block" wx:for="{{foodType}}" wx:for-index="index" wx:for-item="item" wx:key="index">
@@ -26,7 +26,7 @@
       </view>
     </view>
     <scroll-view>
-        <view class="st-view">
+        <view class="st-view" bindtap="goLink">
           <view class="v-left">
             <image src="{{imgPath}}food1.jpg"></image>
           </view>

@@ -91,5 +91,15 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  goLink: function(){
+    wx.navigateTo({
+      url: "/pages/storeDetail/storeDetail"
+    });
+  }, 
+  goLink1:function(){
+    wx.navigateTo({
+      url: "/pages/storeFInd/index"
+    });
   }
 })
