@@ -5,31 +5,41 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    wx.checkSession({
-      success() {
-        console.log("success")
-      },
-      fail() {
-        var that = this;
-        wx.login({
-          success: res => {
-            if (res.code) {
-              //获取code
-              var code = res.code;
-              wx.request({
-                url: 'http://localhost:8090/login',
-                data: {
-                  code: res.code
+    var that = this;
+    if (wx.getStorageSync('token')){
+      wx.login({
+        success: res => {
+          if (res.code) {
+            //获取code
+            var code = res.code;
+            wx.request({
+              url: 'http://192.168.43.236:8090/api/wLogin',
+              method: 'post',
+              data: {
+                code: res.code
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (res) {
+                console.log(res.data);
+                try {
+                  // 同步接口立即写入
+                  wx.setStorageSync('token', res.data.token);
+                  console.log('写入value2成功')
+                } catch (e) {
+                  console.log('写入value2发生错误')
                 }
-              })
-            }
-            else {
-              console.log('登录失败！' + res.errMsg)
-            }
+              }
+            })
           }
-        })
-      }
-    });
+          else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      })
+    }
+    
     // 获取用户信息
     wx.getSetting({
       success: res => {

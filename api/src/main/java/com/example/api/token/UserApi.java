@@ -1,6 +1,8 @@
 package com.example.api.token;
 
 import com.example.api.entity.TokenUser;
+import com.example.api.util.GetId;
+import com.example.api.util.ResponseBuilder;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,9 +36,22 @@ public class UserApi {
             }
         }
     }
+    @PostMapping("wLogin")
+    @PassToken
+    public Object xcToken(@RequestParam Object code){
+        String url="https://api.weixin.qq.com/sns/jscode2session?";
+        url+="appid=wx03b13f074270820d&secret=7a664176aae69b84c33fe38b1f424d52&js_code="+code+"&grant_type=authorization_code";
+        com.alibaba.fastjson.JSONObject res = GetId.get(url);
+        JSONObject jsonObject=new JSONObject();
+        TokenUser user=new TokenUser("2","张三","123456");
+        String token = tokenService.getToken(user);
+        jsonObject.put("token", token);
+        System.out.println(res.getString("openid"));
+        return jsonObject;
+    }
     @UserLoginToken
     @GetMapping("/getMessage")
-    public String getMessage(){
-        return "你已通过验证";
+    public Object getMessage()  throws IllegalAccessException{
+        return ResponseBuilder.success();
     }
 }
