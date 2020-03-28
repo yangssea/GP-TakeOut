@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
+/**
+ * 主要检验接口有无token，有token则放行，无token则不放行
+ */
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
 

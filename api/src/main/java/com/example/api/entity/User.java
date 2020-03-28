@@ -3,7 +3,9 @@ package com.example.api.entity;
 
 
 import javax.persistence.*;
-
+/**
+ * 用户实体类
+ */
 @Entity
 @Table(name = "user")
 public class User {

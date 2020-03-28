@@ -2,7 +2,9 @@ package com.example.api.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-
+/**
+ * 商品实体类
+ */
 @Entity
 @Table(name = "goods")
 public class Goods {

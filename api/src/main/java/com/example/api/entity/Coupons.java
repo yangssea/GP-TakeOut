@@ -3,6 +3,9 @@ package com.example.api.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+/**
+ * 赞助实体类
+ */
 @Entity
 @Table(name = "coupons")
 public class Coupons {

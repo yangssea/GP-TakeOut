@@ -4,6 +4,10 @@ import com.example.api.entity.TokenUser;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 登录controller
+ */
+
 @RestController
 @RequestMapping("/api")
 public class UserApi {

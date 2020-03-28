@@ -5,13 +5,31 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    wx.checkSession({
+      success() {
+        console.log("success")
+      },
+      fail() {
+        var that = this;
+        wx.login({
+          success: res => {
+            if (res.code) {
+              //获取code
+              var code = res.code;
+              wx.request({
+                url: 'http://localhost:8090/login',
+                data: {
+                  code: res.code
+                }
+              })
+            }
+            else {
+              console.log('登录失败！' + res.errMsg)
+            }
+          }
+        })
       }
-    })
+    });
     // 获取用户信息
     wx.getSetting({
       success: res => {

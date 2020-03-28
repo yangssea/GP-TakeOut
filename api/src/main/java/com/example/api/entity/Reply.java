@@ -2,7 +2,9 @@ package com.example.api.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-
+/**
+ * 评论回复实体类
+ */
 @Entity
 @Table(name = "reply")
 public class Reply {

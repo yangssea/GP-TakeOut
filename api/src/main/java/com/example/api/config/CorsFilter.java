@@ -6,7 +6,9 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ *  跨域过滤器
+ */
 @WebFilter(filterName = "CorsFilter ")
 @Configuration
 public class CorsFilter implements Filter {
