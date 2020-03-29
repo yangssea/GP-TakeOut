@@ -1,9 +1,12 @@
 package com.example.api.token;
 
 import com.example.api.entity.TokenUser;
+import com.example.api.entity.User;
+import com.example.api.service.impl.UserServiceImpl;
 import com.example.api.util.GetId;
 import com.example.api.util.ResponseBuilder;
 import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserApi {
 
     private GetToken tokenService = new GetToken();
+    @Autowired
+    private UserServiceImpl userService;
     //登录
     @PostMapping("/login")
     @PassToken
@@ -36,6 +41,7 @@ public class UserApi {
             }
         }
     }
+    //小程序用户登录处理
     @PostMapping("wLogin")
     @PassToken
     public Object xcToken(@RequestParam Object code){
@@ -43,10 +49,20 @@ public class UserApi {
         url+="appid=wx03b13f074270820d&secret=7a664176aae69b84c33fe38b1f424d52&js_code="+code+"&grant_type=authorization_code";
         com.alibaba.fastjson.JSONObject res = GetId.get(url);
         JSONObject jsonObject=new JSONObject();
-        TokenUser user=new TokenUser("2","张三","123456");
-        String token = tokenService.getToken(user);
-        jsonObject.put("token", token);
-        System.out.println(res.getString("openid"));
+        if(!res.getString("openid").equals("")){
+            String oid = res.getString("openid");
+            Object finduser=userService.findUser(oid);
+            if(finduser==null){
+                User saveUser=new User();
+                saveUser.setOpenId(oid);
+                saveUser.setType(1);
+                userService.saveUser(saveUser);
+            }
+            TokenUser user=new TokenUser("2","张三","123456");
+            String token = tokenService.getToken(user);
+            jsonObject.put("token", token);
+            System.out.println(res.getString("openid"));
+        }
         return jsonObject;
     }
     @UserLoginToken

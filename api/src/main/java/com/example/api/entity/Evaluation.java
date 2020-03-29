@@ -1,11 +1,14 @@
 package com.example.api.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
  * 商家评价实体类
  */
+@Data
 @Entity
 @Table(name = "evaluation")
 public class Evaluation {

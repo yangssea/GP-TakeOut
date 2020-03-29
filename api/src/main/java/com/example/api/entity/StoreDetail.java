@@ -1,9 +1,12 @@
 package com.example.api.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 /**
  * 商店详细实体类
  */
+@Data
 @Entity
 @Table(name = "storeDetail")
 public class StoreDetail {

@@ -15,7 +15,7 @@ public class GetToken {
         token= JWT.create().withAudience(user.getId())
                 .sign(Algorithm.HMAC256(user.getPassword()));*/
         Date start = new Date();
-        long currentTime = System.currentTimeMillis() + 60 * 1000;//一小时有效时间
+        long currentTime = System.currentTimeMillis() + 60* 60 * 1000;//一小时有效时间
         Date end = new Date(currentTime);
         String token = "";
 
