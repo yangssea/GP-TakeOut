@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <scroll-view scroll-y="true" class="containers">
-  <view class="header">
+  <view class="header" bindtap="goLink3">
     <image class="h-img" src="{{imgPath+'address.png'}}"></image>
-    <view class="h-text">松泽家园四区</view>
+    <view class="h-text">{{getApp().globalData.address}}</view>
     <image class="h-img2" src="{{imgPath}}down.png"></image>
   </view>
   <view class="clear"></view>
@@ -16,7 +16,7 @@
     </view>
   </view>
   <view>
-    <image src="{{imgPath}}ads.jpg" class="adsimg"></image>
+    <image src="{{imgPath}}ads1.png" class="adsimg"></image>
   </view>
   <view>
     <view class="jtext">推荐商家</view>

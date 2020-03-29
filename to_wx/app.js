@@ -6,7 +6,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     var that = this;
-    if (wx.getStorageSync('token')){
+    if (wx.getStorageSync('token')||true){
       wx.login({
         success: res => {
           if (res.code) {
@@ -62,6 +62,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    imgUrl: 'http://139.159.191.153:8080/image/'
+    imgUrl: 'http://139.159.191.153:8080/image/',
+    address: '淞泽家园四区东'
   }
 })

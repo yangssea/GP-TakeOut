@@ -101,5 +101,10 @@ Page({
     wx.navigateTo({
       url: "/pages/storeFInd/index"
     });
+  },
+  goLink3: function () {
+    wx.navigateTo({
+      url: "/pages/findAdd/findAdd"
+    });
   }
 })
