@@ -1,8 +1,10 @@
+import create from '../../utils/create'
+import store from '../../store/index'
 //index.js
 //获取应用实例
 const app = getApp()
 const imgUrl =app.globalData.imgUrl;
-Page({
+create.Page(store, {
   data: {
     motto: 'Hello World',
     userInfo: {},
@@ -57,6 +59,7 @@ Page({
     })
   },
   onLoad: function () {
+    //响应式，自动更新视图
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -83,6 +86,21 @@ Page({
         }
       })
     }
+    const that = this;
+    wx.getLocation({
+      success: function(res) {
+        console.log(res);
+        wx.request({
+          url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=dzYLWMF8oLGLIh4z5fb9N8EejGijf5PM&coordtype=wgs84ll&location=' + res.latitude + ',' + res.longitude + '&output=json',
+          method: 'get',
+          success: function (res) {
+            console.log(res)
+            that.store.set(that.store.data, 'address', res.data.result.formatted_address);
+          }
+        })
+        
+      },
+    })
   },
   getUserInfo: function(e) {
     console.log(e)

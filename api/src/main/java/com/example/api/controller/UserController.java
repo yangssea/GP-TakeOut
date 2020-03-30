@@ -11,5 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
+    public Object getAddress(){
+        return null;
+    }
 }

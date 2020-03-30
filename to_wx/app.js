@@ -1,4 +1,6 @@
 //app.js
+import store from './store/index'
+import create from './utils/create'
 App({
   onLaunch: function () {
     // 展示本地存储能力

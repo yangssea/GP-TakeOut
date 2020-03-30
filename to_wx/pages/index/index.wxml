@@ -2,7 +2,7 @@
 <scroll-view scroll-y="true" class="containers">
   <view class="header" bindtap="goLink3">
     <image class="h-img" src="{{imgPath+'address.png'}}"></image>
-    <view class="h-text">{{getApp().globalData.address}}</view>
+    <view class="h-text">{{$.address}}</view>
     <image class="h-img2" src="{{imgPath}}down.png"></image>
   </view>
   <view class="clear"></view>
