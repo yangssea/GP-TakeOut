@@ -8,6 +8,8 @@ import org.omg.CORBA.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author yzx
  * @date 2020/3/30  18:42
@@ -17,9 +19,9 @@ public class UserAddressServiceImpl implements UserAddressService {
    @Autowired
     private UserAddressImpl userAddressImpl;
     @Override
-    public UserAddress findAll() {
-        UserAddress serAddress = userAddressImpl.findAllBy();
-        return serAddress;
+    public List<UserAddress> findAll() {
+        List<UserAddress> list = userAddressImpl.findAllBy();
+        return list;
     }
 
     @Override
