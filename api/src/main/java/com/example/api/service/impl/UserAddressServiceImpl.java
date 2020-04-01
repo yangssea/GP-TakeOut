@@ -19,14 +19,15 @@ public class UserAddressServiceImpl implements UserAddressService {
    @Autowired
     private UserAddressImpl userAddressImpl;
     @Override
-    public List<UserAddress> findAll() {
-        List<UserAddress> list = userAddressImpl.findAllBy();
+    public List<UserAddress> findAll(Long id) {
+        List<UserAddress> list = userAddressImpl.findByUserId(id);
         return list;
     }
 
     @Override
-    public Object save(UserAddress userAddress) {
-        Object rst = (Object) userAddressImpl.save(userAddress);
+    public UserAddress save(UserAddress userAddress) {
+
+        UserAddress rst = userAddressImpl.save(userAddress);
         return rst;
     }
 }

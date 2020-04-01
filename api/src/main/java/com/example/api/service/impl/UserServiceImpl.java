@@ -25,4 +25,10 @@ public class UserServiceImpl implements UserService {
         Object result=userImpl.findByOpenId(id);;
         return result;
     }
+
+    @Override
+    public User findById(String id) {
+        User result=userImpl.findById(id);;
+        return result;
+    }
 }

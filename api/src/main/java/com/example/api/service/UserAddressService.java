@@ -10,6 +10,6 @@ import java.util.List;
  */
 
 public interface UserAddressService {
-    List<UserAddress> findAll();
-    Object save(UserAddress userAddress);
+    List<UserAddress> findAll(Long id);
+    UserAddress save(UserAddress userAddress);
 }

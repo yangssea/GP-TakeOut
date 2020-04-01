@@ -25,8 +25,8 @@ public class UserAddressController {
 
     @GetMapping("findAll")
     @UserLoginToken
-    public Object  findAll() throws IllegalAccessException {
-        Object res=userAddressService.findAll();
+    public Object  findAll(@RequestParam Long id) throws IllegalAccessException {
+        Object res=userAddressService.findAll(id);
         return ResponseBuilder.success(res);
     }
 

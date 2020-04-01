@@ -58,9 +58,11 @@ public class UserApi {
                 saveUser.setType(1);
                 userService.saveUser(saveUser);
             }
-            TokenUser user=new TokenUser("2","张三","123456");
+            User users=(User) userService.findUser(oid);
+            TokenUser user=new TokenUser(users.getId()+"","",oid);
             String token = tokenService.getToken(user);
             jsonObject.put("token", token);
+            jsonObject.put("userId", users.getId());
             System.out.println(res.getString("openid"));
         }
         return jsonObject;

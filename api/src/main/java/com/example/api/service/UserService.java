@@ -10,4 +10,5 @@ import com.example.api.entity.User;
 public interface UserService {
     User saveUser(User user);
     Object findUser(String id);
+    User findById(String id);
 }
