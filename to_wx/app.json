@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/storeFInd/index",
+    "pages/addAddress/addAddress",
     "pages/findAdd/findAdd",
+    "pages/storeFInd/index",
     "pages/storeDetail/storeDetail",
     "pages/my/my",
     "pages/oDetail/oDetail",
@@ -40,5 +41,10 @@
     ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "点击确定"
+    }
+  }
 }

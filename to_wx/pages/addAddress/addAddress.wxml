@@ -1,0 +1,38 @@
+<!--pages/addAddress/addAddress.wxml-->
+<scroll-view>
+   <wux-form id="wux-form">
+      <wux-cell-group title="name">
+        <wux-cell hover-class="none" >
+            <wux-field name="name" initialValue="{{name}}">
+                <wux-input type="number" value="name" label="联系人" placeholder="姓名"/>
+            </wux-field>
+
+        </wux-cell>
+      </wux-cell-group>
+      <wux-cell-group title="phone" initialValue="{{phone}}">
+        <wux-cell hover-class="none">
+            <wux-field name="phone">
+                <wux-input value="phone" label="电话" placeholder="手机电话"/>
+            </wux-field>
+        </wux-cell>
+      </wux-cell-group>
+      <wux-cell-group title="address" bindtap="onChangeAddress" >
+        <wux-cell hover-class="none" initialValue="{{address}}">
+            <wux-field name="address" >
+               <text>地址</text>
+               <text wx:if="{{!aView}}" style="margin-left:3.8rem;color:gray;">请选择地址</text>
+                <text wx:if="{{aView}}" style="margin-left:3.8rem;">{{address}}</text>
+            </wux-field>
+        </wux-cell>
+      </wux-cell-group>
+     
+      <wux-cell-group title="reamrk">
+        <wux-cell hover-class="none" initialValue="{{remark}}">
+            <wux-field name="remark" >
+                <wux-input value="reamrk" label="补充说明" placeholder="详细地址、门牌街道"/>
+            </wux-field>
+        </wux-cell>
+      </wux-cell-group>
+      <wux-button block  bindtap="onSubmit"  type="balanced">确定</wux-button>
+   </wux-form>
+</scroll-view>

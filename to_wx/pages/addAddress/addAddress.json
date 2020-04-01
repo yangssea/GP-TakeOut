@@ -1,0 +1,24 @@
+{
+  "usingComponents": {
+    "wux-button": "../../static/lib/button/index",
+    "wux-toast": "../../static/lib/toast/index",
+    "wux-cell-group": "../../static/lib/cell-group/index",
+    "wux-cell": "../../static/lib/cell/index",
+    "wux-form": "../../static/lib/form/index",
+    "wux-field": "../../static/lib/field/index",
+    "wux-slider": "../../static/lib/slider/index",
+    "wux-rater": "../../static/lib/rater/index",
+    "wux-input-number": "../../static/lib/input-number/index",
+    "wux-textarea": "../../static/lib/textarea/index",
+    "wux-input": "../../static/lib/input/index",
+    "wux-checkbox-group": "../../static/lib/checkbox-group/index",
+    "wux-checkbox": "../../static/lib/checkbox/index",
+    "wux-radio-group": "../../static/lib/radio-group/index",
+    "wux-radio": "../../static/lib/radio/index",
+    "wux-switch": "../../static/lib/switch/index",
+    "wux-picker": "../../static/lib/picker/index",
+    "wux-date-picker": "../../static/lib/date-picker/index",
+    "wux-popup-select": "../../static/lib/popup-select/index"
+  },
+   "navigationBarTitleText": "新增地址"
+}

@@ -28,7 +28,15 @@ App({
                 try {
                   // 同步接口立即写入
                   wx.setStorageSync('token', res.data.token);
-                  console.log('写入value2成功')
+                  console.log('写入value2成功');
+                  wx.setStorageSync('userId', res.data.userId);
+                  console.log('写入value2成功');
+                  wx.authorize({
+                    scope: 'scope.userLocation',
+                    success() {
+                      console.log('授权成功');
+                    }
+                  })
                 } catch (e) {
                   console.log('写入value2发生错误')
                 }
@@ -65,6 +73,7 @@ App({
   globalData: {
     userInfo: null,
     imgUrl: 'http://139.159.191.153:8080/image/',
+    url: 'http://192.168.43.236:8090/',
     address: '淞泽家园四区东'
   }
 })

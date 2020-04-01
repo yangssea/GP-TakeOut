@@ -9,6 +9,7 @@ create.Page(store, {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    tviews: true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     imgPath: imgUrl,
     foodType: [{
@@ -87,20 +88,23 @@ create.Page(store, {
       })
     }
     const that = this;
-    wx.getLocation({
-      success: function(res) {
-        console.log(res);
-        wx.request({
-          url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=dzYLWMF8oLGLIh4z5fb9N8EejGijf5PM&coordtype=wgs84ll&location=' + res.latitude + ',' + res.longitude + '&output=json',
-          method: 'get',
-          success: function (res) {
-            console.log(res)
-            that.store.set(that.store.data, 'address', res.data.result.formatted_address);
-          }
-        })
-        
-      },
-    })
+    if(this.store.data.address==''){
+      wx.getLocation({
+        success: function(res) {
+          console.log(res);
+          wx.request({
+            url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=dzYLWMF8oLGLIh4z5fb9N8EejGijf5PM&coordtype=wgs84ll&location=' + res.latitude + ',' + res.longitude + '&output=json',
+            method: 'get',
+            success: function (res) {
+              that.store.set(that.store.data, 'address', res.data.result.formatted_address);
+              that.store.set(that.store.data, 'lat', res.data.result.latitude);
+              that.store.set(that.store.data, 'lng', res.data.result.longitude);
+            }
+          })
+          
+        },
+      })
+    }
   },
   getUserInfo: function(e) {
     console.log(e)

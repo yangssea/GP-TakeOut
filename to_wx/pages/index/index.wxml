@@ -1,8 +1,11 @@
 <!--index.wxml-->
 <scroll-view scroll-y="true" class="containers">
+<wxs src="./util.wxs" module="tools" />
   <view class="header" bindtap="goLink3">
     <image class="h-img" src="{{imgPath+'address.png'}}"></image>
-    <view class="h-text">{{$.address}}</view>
+    <view class="h-text" wx:if="{{$.address.length>7}}">{{tools.sub($.address,0,7)}}         <text>...</text>
+    </view>
+     <view class="h-text" wx:if="{{$.address.length<=7}}">{{$.address}}</view>
     <image class="h-img2" src="{{imgPath}}down.png"></image>
   </view>
   <view class="clear"></view>

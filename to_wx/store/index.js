@@ -3,7 +3,9 @@ export default {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    address: '淞泽家园四区东',
+    address: '',
+    lat: '',
+    lng: '',
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     logs: []
   },
