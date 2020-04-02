@@ -5,6 +5,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
+
 /**
  * 订单实体类
  */
@@ -20,17 +22,21 @@ public class Order {
     @Column(length = 255)
     private int userId;
     @Column(length = 255)
+    private int riderId;
+    @Column(length = 255)
     private BigDecimal price;
     @Column(length = 255)
     private String img;
     @Column(length = 255)
-    private String OrderTime;
+    @Temporal(TemporalType.TIME)
+    private Date OrderTime;
     @Column(length = 255)
     private String address;
     @Column(length = 255)
     private String deliveryMan;
     @Column(length = 255)
     private String deliveryManPhone;
+    //订单状态1.备餐中2.已配送3.已完成4.已取消
     @Column(length = 10)
     private int status;
 }

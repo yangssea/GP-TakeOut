@@ -5,7 +5,7 @@
       <wux-cell-group title="name">
         <wux-cell hover-class="none" >
             <wux-field name="name" initialValue="{{name}}">
-                <wux-input type="number" value="name" label="联系人" placeholder="姓名"/>
+                <wux-input value="name" label="联系人" placeholder="姓名"/>
             </wux-field>
 
         </wux-cell>
@@ -13,7 +13,7 @@
       <wux-cell-group title="phone" initialValue="{{phone}}">
         <wux-cell hover-class="none">
             <wux-field name="phone">
-                <wux-input value="phone" label="电话" placeholder="手机电话"/>
+                <wux-input  type="number" value="phone" label="电话" placeholder="手机电话"/>
             </wux-field>
         </wux-cell>
       </wux-cell-group>

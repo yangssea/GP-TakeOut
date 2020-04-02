@@ -3,6 +3,8 @@ package com.example.api.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 /**
  * 商店详细实体类
  */
@@ -15,10 +17,21 @@ public class StoreDetail {
     private int id;
     @Column(length = 255)
     private int userId;
+    //1.美食2.超市3.水果4.晚餐5.汉堡6速食7蔬菜8大牌9炸鸡10粥铺
     @Column(length = 10)
-    private int type;
+    private String type;
     @Column(length = 255)
     private String name;
+    @Column(length = 255)
+    private String latitude;
+    @Column(length = 255)
+    private String longitude;
+    @Column(length = 255)
+    private String shippingFee;
+    @Column(length = 255)
+    private String shippingTimeLength;
+    @Column(length = 255)
+    private String startFee;
     @Column(length = 255)
     private String img;
     @Column(length = 255)
