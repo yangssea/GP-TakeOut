@@ -1,7 +1,9 @@
 // pages/addAddress/addAddress.js
 import api from '../../service/findAddservice.js'
 import {$wuxForm} from '../../static/lib/index'
-import {$wuxToast} from '../../static/lib/index'
+import Toast from '../../static/vant/toast/toast'
+import util from '../../utils/pattern.js'
+
 Page({
 
   /**
@@ -22,16 +24,16 @@ Page({
     wx.chooseLocation({
       success: (res) => {
         console.log(res);
+        Toast.success('选择成功');
         that.setData({
           latitude: res.latitude,
           longitude : res.longitude,
           address: res.name,
           aView: true
-          
         })
-        console.log(that.data.lat)
       },
       fail: (err) => {
+        Toast.fail('选择失败')
         console.log(err);
       }
     });
@@ -46,13 +48,22 @@ Page({
     value.longitude=this.data.longitude;
     value.userId = wx.getStorageSync('userId');
     console.log('Wux Form Submit \n', value);
-    api.save(value).then((success) => {
-      wx.navigateTo({
-        url: "/pages/findAdd/findAdd"
+    if(util.checkPhone(value.phone)&&value.name&&value.address){
+      api.save(value).then((success) => {
+        Toast.success('添加成功');
+        wx.navigateTo({
+          url: "/pages/findAdd/findAdd"
+        });
+      }, (error) => {
+        Toast.success('添加失败');
+        console.log(error);
       });
-    }, (error) => {
-      console.log(error);
-    });
+    }else{
+      Toast.fail("字段不符合规则");
+    }
+   
+  
+   
 
   },
   /**

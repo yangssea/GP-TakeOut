@@ -1,5 +1,6 @@
 <!--pages/addAddress/addAddress.wxml-->
 <scroll-view>
+<van-toast id="van-toast" />
    <wux-form id="wux-form">
       <wux-cell-group title="name">
         <wux-cell hover-class="none" >

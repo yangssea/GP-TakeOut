@@ -12,8 +12,9 @@
   <view class="sec">
     <input bindtap="goLink1"  class="wi-input" maxlength="15" placeholder="     搜索商家、商品名称" />
   </view>
+  <van-toast id="van-toast" />
   <view class="ftype">
-    <view class="ft-block" wx:for="{{foodType}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+    <view class="ft-block" bindtap="test" wx:for="{{foodType}}" wx:for-index="index" wx:for-item="item" wx:key="index">
       <image class="ft-img" src="{{item.imgPath}}"></image>
       <view class="ft-text">{{item.name}}</view>
     </view>

@@ -17,7 +17,7 @@ import java.util.List;
 public interface UserImpl extends JpaRepository<User, Long> {
     //多属性查询接口
     User findByOpenId(String openId);
-    User findById(String id);
+    User findById(int id);
     /*//自定义属性查询接口
     @Query("SELECT O FROM User O WHERE O.name = :name1  OR O.name = :name2 ")
     List<User> findTwoName(@Param("name1") String name1, @Param("name2") String name2);

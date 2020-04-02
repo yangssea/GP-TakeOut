@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "van-toast": "../../static/vant/toast/index",
     "wux-button": "../../static/lib/button/index",
     "wux-toast": "../../static/lib/toast/index",
     "wux-cell-group": "../../static/lib/cell-group/index",

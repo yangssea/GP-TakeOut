@@ -1,5 +1,6 @@
 import create from '../../utils/create'
 import store from '../../store/index'
+import Toast from '../../static/vant/toast/toast';
 //index.js
 //获取应用实例
 const app = getApp()

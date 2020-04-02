@@ -34,11 +34,9 @@ public class UserAddress {
     private String address;
     @Column(length = 255)
     @NotNull
-    @Pattern(regexp = "^[1-9]+(.[0-9]{1,30})?$")
     private String latitude;
     @Column(length = 255)
     @NotNull
-    @Pattern(regexp = "^[1-9]+(.[0-9]{1,30})?$")
     private String longitude;
     @Column(length = 255)
     private String remark;

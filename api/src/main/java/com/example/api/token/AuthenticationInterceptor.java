@@ -54,12 +54,17 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 } catch (JWTDecodeException j) {
                     throw new RuntimeException("401");
                 }
-                User user = userService.findById(userId);
+                User user = userService.findById(Integer.parseInt(userId));
                 if (user == null) {
                     throw new RuntimeException("用户不存在，请重新登录");
                 }
                 // 验证 token
-                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();
+                JWTVerifier jwtVerifier;
+                if(!user.getOpenId().equals("")){
+                    jwtVerifier = JWT.require(Algorithm.HMAC256(user.getOpenId())).build();
+                }else{
+                    jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();
+                }
                 try {
                     jwtVerifier.verify(token);
                 } catch (JWTVerificationException e) {
