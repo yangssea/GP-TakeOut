@@ -5,5 +5,5 @@ package com.example.api.service;
  * @date 2020/4/2  20:19
  */
 public interface StoreDetailService {
-    Object getStoreList(int page,int type);
+    Object getStoreList(int page,int type,double lat,double lng);
 }

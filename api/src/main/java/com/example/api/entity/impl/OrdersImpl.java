@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @date 2020/4/2  15:10
  */
 @Repository
-public interface OrderImpl extends JpaRepository<Order, Long> {
-    @Query("select count(a) from Order  a where a.storeId =:id ")
-    Object selectBySum(@Param("id") int id);
+public interface OrdersImpl extends JpaRepository<Order, Long> {
+    @Query(value = "select count(*) from orders as  a where a.store_id =:id and a.order_time like :times",nativeQuery = true)
+    String selectBySum(@Param("id") int id,@Param("times") String times);
 }

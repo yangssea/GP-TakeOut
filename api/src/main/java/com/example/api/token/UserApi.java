@@ -25,7 +25,7 @@ public class UserApi {
     @PassToken
     public Object login(@RequestBody TokenUser user){
         JSONObject jsonObject=new JSONObject();
-        TokenUser userForBase=new TokenUser("2","张三","123456");
+        TokenUser userForBase=new TokenUser("3","张三","123456");
         if(userForBase==null){
             jsonObject.put("message","登录失败,用户不存在");
             return jsonObject;

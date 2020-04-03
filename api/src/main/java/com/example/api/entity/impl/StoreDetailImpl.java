@@ -1,8 +1,11 @@
 package com.example.api.entity.impl;
 
 import com.example.api.entity.StoreDetail;
+import com.example.api.entity.dto.StoreDto;
+import org.apache.catalina.Store;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,5 +16,8 @@ import java.util.List;
  */
 @Repository
 public interface StoreDetailImpl extends JpaRepository<StoreDetail, Long> {
-    List<Object> findAllBy();
+    @Query("select a from StoreDetail a")
+    List<StoreDetail> findStoreAll();
+    @Query("select distinct a from StoreDetail a left join Coupons c on a.id = c.storeId where c.type =:id")
+    List<StoreDetail> findType(@Param("id") int type);
 }

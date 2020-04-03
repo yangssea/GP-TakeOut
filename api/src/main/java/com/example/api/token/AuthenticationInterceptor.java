@@ -60,9 +60,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 }
                 // 验证 token
                 JWTVerifier jwtVerifier;
-                if(!user.getOpenId().equals("")){
+                if(!(user.getOpenId()==null||user.getOpenId().equals(""))){
+                    System.out.println("xiaochengxu");
                     jwtVerifier = JWT.require(Algorithm.HMAC256(user.getOpenId())).build();
                 }else{
+                    System.out.println("kefuduan"+user.getPassword());
                     jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();
                 }
                 try {

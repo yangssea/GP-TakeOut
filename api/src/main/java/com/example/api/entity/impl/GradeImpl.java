@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface GradeImpl  extends JpaRepository<Grade, Long>{
+    //其中查询的userid为storedetail id
     @Query("select AVG(a.gradeGoods),avg(a.graderide),avg(a.gradeTaste) from Grade a where a.userId=:id")
-    Object find(@Param("id") long id);
+    String find(@Param("id") int id);
 }

@@ -20,7 +20,7 @@ public class Coupons {
     @Column(length = 255)
     @NonNull
     private int storeId;
-    //店铺红包类型
+    //店铺红包类型1.红包优惠2.折扣优惠3.满减优惠4.首单优惠5系统红包
     @Column(length = 255)
     @NonNull
     private int type;
@@ -45,6 +45,20 @@ public class Coupons {
     @Column(length = 255)
     @Temporal(TemporalType.DATE)
     private Date time;
+
+    public Coupons(@NonNull int storeId, @NonNull int type, @NonNull int allType, String discount, String start, String end, String content, @NonNull Date time) {
+        this.storeId = storeId;
+        this.type = type;
+        this.allType = allType;
+        this.discount = discount;
+        this.start = start;
+        this.end = end;
+        this.content = content;
+        this.time = time;
+    }
+
+    public Coupons() {
+    }
 
 
 }
