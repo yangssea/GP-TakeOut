@@ -49,7 +49,6 @@ App({
         }
       })
     }
-    
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -74,6 +73,6 @@ App({
     userInfo: null,
     imgUrl: 'http://139.159.191.153:8080/image/',
     url: 'http://192.168.43.236:8090/',
-    address: '淞泽家园四区东'
+    address: '淞泽家园四区东',
   }
 })

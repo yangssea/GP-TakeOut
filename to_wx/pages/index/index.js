@@ -1,6 +1,7 @@
 import create from '../../utils/create'
 import store from '../../store/index'
-import Toast from '../../static/vant/toast/toast';
+import Toast from '../../static/vant/toast/toast'
+import api from '../../service/indexService.js'
 //index.js
 //获取应用实例
 const app = getApp()
@@ -11,6 +12,12 @@ create.Page(store, {
     userInfo: {},
     hasUserInfo: false,
     tviews: true,
+    vmore: true,
+    page:1,
+    lat: 0,
+    lng: 0,
+    type: 0,
+    storeList: [],
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     imgPath: imgUrl,
     foodType: [{
@@ -45,14 +52,16 @@ create.Page(store, {
       name: "包子粥店"
     }],
     storeType: [{
-      name: "生活周"
+      name: "全部商家"
     }, {
-        name: "首单立减"
+        name: "商家红包"
     }, {
-        name: "津贴优惠"
+        name: "折扣优惠"
     }, {
-        name: "满减优惠"
-    }]
+        name: "限时满减"
+      }, {
+        name: "首单优惠"
+      }]
   },
   //事件处理函数
   bindViewTap: function() {
@@ -88,6 +97,7 @@ create.Page(store, {
         }
       })
     }
+    //定位当前页面位置
     const that = this;
     if(this.store.data.address==''){
       wx.getLocation({
@@ -98,14 +108,61 @@ create.Page(store, {
             method: 'get',
             success: function (res) {
               that.store.set(that.store.data, 'address', res.data.result.formatted_address);
-              that.store.set(that.store.data, 'lat', res.data.result.latitude);
-              that.store.set(that.store.data, 'lng', res.data.result.longitude);
+              that.store.set(that.store.data, 'lat', res.data.result.location.lat);
+              that.store.set(that.store.data, 'lng', res.data.result.location.lng);
+              that.data.lat = res.data.result.longitude;
+              //获取商店
+              console.log(res.data.result.location.lng)
+              api.findAll({ page: 1, type: 0, lat: res.data.result.location.lat, lng: res.data.result.location.lng}).then((res) => {
+                console.log(res)
+                that.setData({
+                  storeList: res.result
+                })
+              }, (error) => {
+                console.log(error);
+              });
             }
-          })
-          
+          })    
         },
       })
     }
+  
+  },
+  //选择商店类型
+  storeType:function(event){
+    this.data.type = event.currentTarget.dataset.type;
+    this.setData({
+      type: event.currentTarget.dataset.type
+    })
+    var that=this;
+    api.findAll({ page: 1, type: event.currentTarget.dataset.type, lat:this.store.data.lat,lng: this.store.data.lng}).then((res) => {
+      that.setData({
+        storeList: res.result
+      })
+    }, (error) => {
+      console.log(error);
+    });
+  },
+  //加载更多
+  loadingMore: function() {
+    var that = this;
+    api.findAll({ page: this.data.page + 1, type: this.data.type, lat: this.store.data.lat, lng: this.store.data.lng}).then((res) => {
+      if (res.result.length<10){
+        this.data.vmore=false;
+        that.setData({
+          vmore: this.data.vmore
+        })
+      }
+      that.data.page += 1;
+      for (var i = 0; i < res.result.length; i++) {
+        this.data.storeList.push(res.result[i])
+      }
+      that.setData({
+        storeList: this.data.storeList
+      })
+    }, (error) => {
+      console.log(error);
+    });
   },
   getUserInfo: function(e) {
     console.log(e)

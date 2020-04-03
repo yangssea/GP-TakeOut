@@ -25,72 +25,36 @@
   <view>
     <view class="jtext">推荐商家</view>
     <view class="stype">
-      <view wx:for="{{storeType}}" wx:for-index="index" wx:key="index" class="stype-block">   
+      <view wx:for="{{storeType}}" wx:for-index="index" wx:key="index" 
+      class="stype-block {{index===type?'colorType':''}}" bindtap="storeType" data-type="{{index}}">   
         {{item.name}}
       </view>
     </view>
     <scroll-view>
-        <view class="st-view" bindtap="goLink">
+        <view class="st-view" bindtap="goLink" wx:for="{{storeList}}" ax:for-item="item" wx:for-index="index" wx:key="index">
           <view class="v-left">
-            <image src="{{imgPath}}food1.jpg"></image>
+            <image src="{{imgPath+item.storeDetail.img}}"></image>
           </view>
           <view class="v-right">
-            <view class="v-text1">好再来超市</view>
-            <view class="v-text2"><text class="v2-t">★4.4</text> 月售79</view>
+            <view class="v-text1">{{item.storeDetail.name}}</view>
+            <view class="v-text2"><text class="v2-t">★{{item.grade}}</text> 月售{{item.orderSum}}</view>
             <view class="v-flex">
-              <view class="v-text2">起送¥39 配送¥5</view>
-              <view class="v-text2">42分钟 4.1km</view>
+              <view class="v-text2">起送¥{{item.storeDetail.startFee}} 配送¥{{item.storeDetail.shippingFee}}</view>
+              <view class="v-text2">{{item.storeDetail.shippingTimeLength}}分钟 10km</view>
             </view>
             <view class="v-flex2">
               <text class="vf2b">满15减20</text>
-              <text class="vf2b leftv">满15减20</text>
-              <text class="vf2b leftv">满15减20</text>
+              <text class="vf2b leftv" wx:for="{{item.list}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+                <text wx:if="{{items.type==1}}">满{{items.end}}减{{items.end}}</text>
+                <text wx:if="{{items.type==2}}">{{item.discount}}折</text>
+                <text wx:if="{{items.type==3}}">满{{items.end}}减{{items.end}}</text>
+                <text wx:if="{{items.type==4}}">首单立减</text>
+              </text>
             </view>
           </view>
         </view>
-    
-
-
-        <view class="st-view">
-          <view class="v-left">
-            <image src="{{imgPath}}store.jpg"></image>
-          </view>
-          <view class="v-right">
-            <view class="v-text1">好再来超市</view>
-            <view class="v-text2"><text class="v2-t">★4.4</text> 月售79</view>
-            <view class="v-flex">
-              <view class="v-text2">起送¥39 配送¥5</view>
-              <view class="v-text2">42分钟 4.1km</view>
-            </view>
-            <view class="v-flex2">
-              <text class="vf2b">满15减20</text>
-              <text class="vf2b leftv">满15减20</text>
-              <text class="vf2b leftv">满15减20</text>
-            </view>
-          </view>
-        </view>
-     
-
-
-        <view class="st-view">
-          <view class="v-left">
-            <image src="{{imgPath}}food1.jpg"></image>
-          </view>
-          <view class="v-right">
-            <view class="v-text1">好再来超市</view>
-            <view class="v-text2"><text class="v2-t">★4.4</text> 月售79</view>
-            <view class="v-flex">
-              <view class="v-text2">起送¥39 配送¥5</view>
-              <view class="v-text2">42分钟 4.1km</view>
-            </view>
-            <view class="v-flex2">
-              <text class="vf2b">满15减20</text>
-              <text class="vf2b leftv">满15减20</text>
-              <text class="vf2b leftv">满15减20</text>
-            </view>
-          </view>
-        </view>
-  
+        <view wx:if="{{vmore&&storeList.length>9}}" class="loading" bindtap="loadingMore">加载更多</view>
+        <view wx:if="{{!vmore&storeList.length>9}}" class="loading">到底了~</view>
     </scroll-view>
   </view>
 </scroll-view>
