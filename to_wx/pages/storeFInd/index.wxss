@@ -1,0 +1,142 @@
+/* pages/storeFInd/index.wxss */
+.header{
+  height: 2rem;
+  background: #009dfe; 
+}
+.find{
+  background: #009dfe; 
+}
+.wux-search-bar {
+  background-color: #009dfe !important; 
+}
+.wux-search-bar::before{
+  border: none !important;
+}
+.h-find{
+  float: left;
+  margin-left: 0.6rem;
+  font-size: 0.8rem;
+  color: gray;
+  margin-top: 1rem;
+}
+.h-img{
+  float: right;
+  width:0.8rem;
+  height:0.8rem;
+  margin-top: 1rem;
+  margin-right: 0.6rem;
+}
+.h-all{
+  display: flex;
+  margin-top: 1rem;
+}
+.h-block{
+  height: 1rem;
+  font-size: 0.7rem;
+  border-radius: 0.2rem;
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+  border: 1px solid lightgray;
+}
+.st-view{
+  background: white;
+  height: 16.5rem;
+}
+.v-left{
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  float: left;
+  border: 1px solid lightgray;
+}
+.v-left image{
+  width: 100%;
+  height: 100%;
+}
+.v-right{
+  float: left;
+  width: 70%;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+.v-text1{
+  font-weight: 600;
+  margin-top: -0.2rem; 
+}
+.v-text2{
+  margin-top: 0.4rem;
+  font-size: 0.5rem;
+  color: grey;
+}
+.v2-t{
+  color: #fe6900;
+}
+.v-flex{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.leftv{
+  margin-left: 0.3rem;
+}
+.store-block{
+  margin-top:2rem; 
+}
+.find-result{
+  background: #f7f7f7;
+}
+.s-select{
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: gray;
+  margin: 1rem;
+}
+.hbblock{
+  font-size: 0.6rem;
+  color: grey;
+  margin-top: 1rem;
+}
+.hbimg{
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-top: 0.1rem;
+  float: left;
+}
+.hbview{
+  margin-left: 0.2rem;
+  float: left;
+}
+.fd-view{
+  display: flex;
+}
+.fdv-b{
+  margin-top: 0.3rem;
+}
+.fdv-b>image{
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-left: 0.2rem;
+}
+.te1{
+  font-size: 0.6rem;
+  color: grey;
+}
+.te2{
+  font-size: 0.8rem;
+  color: #76c33a;
+  margin-top: 0.3rem;
+}
+.mtop{
+  margin-top: 1rem;
+}
+.loading{
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  color: gray;
+  text-align: center;
+}
+.colorType{
+  color: #009dfe;
+}

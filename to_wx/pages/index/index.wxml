@@ -43,7 +43,6 @@
               <view class="v-text2">{{item.storeDetail.shippingTimeLength}}分钟 10km</view>
             </view>
             <view class="v-flex2">
-              <text class="vf2b">满15减20</text>
               <text class="vf2b leftv" wx:for="{{item.list}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
                 <text wx:if="{{items.type==1}}">满{{items.end}}减{{items.end}}</text>
                 <text wx:if="{{items.type==2}}">{{item.discount}}折</text>

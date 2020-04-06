@@ -114,7 +114,6 @@ create.Page(store, {
               //获取商店
               console.log(res.data.result.location.lng)
               api.findAll({ page: 1, type: 0, lat: res.data.result.location.lat, lng: res.data.result.location.lng}).then((res) => {
-                console.log(res)
                 that.setData({
                   storeList: res.result
                 })

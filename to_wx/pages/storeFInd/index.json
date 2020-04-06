@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "wux-button": "../../static/lib/button/index",
+    "wux-search-bar": "../../static/lib/search-bar/index"
+  }
+}

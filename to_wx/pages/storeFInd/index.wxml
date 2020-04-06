@@ -1,0 +1,62 @@
+<!--pages/storeFInd/index.wxml-->
+<view>
+  <view class="header">
+     <wux-search-bar placeholder="搜索商家、商品名称" bind:confirm="onConfirm"  clear="flase" maxlength="8" class="find"/>
+  </view>
+  <view wx:if="{{flase}}">
+    <view>
+      <view class="h-find">历史搜索</view>
+      <image class="h-img" src="{{imgUrl}}delete.png"></image>
+    </view>
+    <view style="clear:both"></view>
+    <view class="h-all">
+      <text class="h-block">炒饭</text>
+      <text class="h-block">火锅</text>
+      <text class="h-block">炸鸡你</text>
+    </view>
+  </view>
+  <view class="s-select">
+    <view bindtap="findType" data-type="1">综合排序</view>
+    <view bindtap="findType" data-type="2">距离最近</view>
+    <view bindtap="findType" data-type="3">销售最高</view>
+  </view>
+  <scroll-view class="find-result">
+     <view  wx:for="{{storeList}}" wx:for-index="index" wx:key="index" class="st-view {{index>0?'mtop':''}}">
+          <view class="v-left">
+            <image src="{{imgUrl+item.storeDetail.img}}"></image>
+          </view>
+          <view class="v-right">
+            <view class="v-text1">{{item.storeDetail.name}}</view>
+            <view class="v-text2"><text class="v2-t">★{{item.storeDetail.grade}}</text> 
+              月售{{item.storeDetail.orderSum}}
+            </view>
+            <view class="v-flex">
+              <view class="v-text2">起送¥{{item.storeDetail.startFee}} 配送¥{{item.storeDetail.shippingFee}}</view>
+              <view class="v-text2">{{item.storeDetail.shippingTimeLength}}分钟 {{item.distance}}km</view>
+            </view>
+            <view class="hbblock">
+              <image class="hbimg" src="{{imgUrl}}hd1.png"></image>
+              <view  class="hbview">美食汇新用户首单立减11元</view> 
+            </view>
+            <view style="clear:both"></view>
+            <view class="hbblock" style="margin-top:0.3rem;">
+              <image class="hbimg" src="{{imgUrl}}hd2.png"></image>
+              <view  class="hbview" wx:if="{{item.list.length>0&&item.list[0].type==1}}">满{{item.list[0].end}}减{{item.list[0].end}}</view>
+              <view  class="hbview" wx:if="{{item.list.length>0&&item.list[0].type==2}}">{{item.list[0].discount}}折</view>
+              <view  class="hbview" wx:if="{{item.list.length>0&&item.list[0].type==3}}">满{{items.list[0].end}}减{{item.list[0].end}}</view>
+              <view  class="hbview" wx:if="{{item.list.length>0&&item.list[0].type==4}}">首单立减</view>
+            </view>
+             <view style="clear:both"></view>
+            <view class="fd-view" >
+              <view class="fdv-b" wx:for="{{item.glist}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+                <image  src="{{imgUrl+items.img}}"></image>
+                <view class="te1">{{items.name}}</view>
+                <view class="te2">¥{{items.price}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{vmore&&storeList.length>9}}" class="loading" bindtap="loadingMore">加载更多</view>
+        <view wx:if="{{!vmore&storeList.length>9}}" class="loading">到底了~</view>
+  </scroll-view> 
+</view>
