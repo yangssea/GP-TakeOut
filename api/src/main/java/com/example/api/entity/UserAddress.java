@@ -31,6 +31,7 @@ public class UserAddress {
     private String phone;
     @Column(length = 255)
     @NotNull
+    @Pattern(regexp = "^[0-9]*$")
     private String address;
     @Column(length = 255)
     @NotNull

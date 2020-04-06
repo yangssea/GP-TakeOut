@@ -6,4 +6,5 @@ package com.example.api.service;
  */
 public interface StoreDetailService {
     Object getStoreList(int page,int type,double lat,double lng);
+    Object findStoreList(int page,int type,double lat,double lng,String find);
 }

@@ -2,7 +2,7 @@ package com.example.api.controller;
 
 import com.example.api.entity.UserAddress;
 import com.example.api.service.impl.UserAddressServiceImpl;
-import com.example.api.token.UserLoginToken;
+import com.example.api.config.token.UserLoginToken;
 import com.example.api.util.ResponseBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

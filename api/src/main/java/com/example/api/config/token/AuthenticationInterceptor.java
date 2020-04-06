@@ -1,11 +1,10 @@
-package com.example.api.token;
+package com.example.api.config.token;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.example.api.entity.TokenUser;
 import com.example.api.entity.User;
 import com.example.api.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

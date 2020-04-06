@@ -18,6 +18,8 @@ import java.util.List;
 public interface StoreDetailImpl extends JpaRepository<StoreDetail, Long> {
     @Query("select a from StoreDetail a")
     List<StoreDetail> findStoreAll();
-    @Query("select distinct a from StoreDetail a left join Coupons c on a.id = c.storeId where c.type =:id")
+    @Query("select distinct a from StoreDetail a left join Coupons c on a.id = c.storeId where c.type =:id and a.disableStatus =0")
     List<StoreDetail> findType(@Param("id") int type);
+    @Query("select a from StoreDetail a where a.name like :name")
+    List<StoreDetail> findLike(@Param("name") String name);
 }

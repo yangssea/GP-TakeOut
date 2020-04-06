@@ -1,4 +1,4 @@
-package com.example.api.token;
+package com.example.api.config.token;
 
 import com.example.api.entity.TokenUser;
 import com.example.api.entity.User;

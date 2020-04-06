@@ -1,4 +1,4 @@
-package com.example.api.token;
+package com.example.api.config.token;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
