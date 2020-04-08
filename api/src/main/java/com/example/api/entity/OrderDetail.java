@@ -20,5 +20,9 @@ public class OrderDetail {
     @Column(length = 255)
     private String priceName;
     @Column(length = 255)
+    private Long goodsId;
+    @Column(length = 255)
+    private int sum;
+    @Column(length = 255)
     private BigDecimal price;
 }

@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service
 public class UserAddressServiceImpl implements UserAddressService {
-   @Autowired
+    @Autowired
     private UserAddressImpl userAddressImpl;
     @Override
     public List<UserAddress> findAll(Long id) {
@@ -26,7 +26,6 @@ public class UserAddressServiceImpl implements UserAddressService {
 
     @Override
     public UserAddress save(UserAddress userAddress) {
-
         UserAddress rst = userAddressImpl.save(userAddress);
         return rst;
     }

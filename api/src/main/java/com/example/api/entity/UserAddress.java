@@ -31,7 +31,6 @@ public class UserAddress {
     private String phone;
     @Column(length = 255)
     @NotNull
-    @Pattern(regexp = "^[0-9]*$")
     private String address;
     @Column(length = 255)
     @NotNull
@@ -41,4 +40,14 @@ public class UserAddress {
     private String longitude;
     @Column(length = 255)
     private String remark;
+
+    public UserAddress(@NotNull Long userId, @NotEmpty @NotNull String name, @NotNull @Pattern(regexp = "^[0-9]*$") String phone, @NotNull String address, @NotNull String latitude, @NotNull String longitude, String remark) {
+        this.userId = userId;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.remark = remark;
+    }
 }

@@ -98,6 +98,15 @@ public class StoreDetailServiceImpl implements StoreDetailService {
                     //获取优惠列表
                     List<Coupons> liatCou = couponsImpl.getByStoreId(list.get(i).getId());
                     storeDto.setList(liatCou);
+                    //获取距离
+                    double menter;
+                    if (list.get(i).getLatitude() == null || list.get(i).getLatitude().equals("") || list.get(i).getLongitude().equals("") || list.get(i).getLongitude().equals("")) {
+                        menter = 0.0;
+                    } else {
+                        menter = GetDistanceMeter.getMeter(lat, lng, Double.parseDouble(list.get(i).getLatitude()), Double.parseDouble(list.get(i).getLongitude()));
+                    }
+                    menter=Double.parseDouble(String.format("%.0f", menter));
+                    storeDto.setDistance(menter);
                     list1.add(storeDto);
                 }
             }
