@@ -22,34 +22,44 @@ create.Page(store, {
     imgPath: imgUrl,
     foodType: [{
       imgPath: imgUrl+"s1.png",
+      sum:0,
       name: "美食"
     }, {
         imgPath: imgUrl +"s2.png",
-        name: "超市便利"
+        name: "超市便利",
+        sum: 0
     }, {
         imgPath: imgUrl +"s3.png",
-        name: "水果"
+        name: "水果",
+        sum: 0
     }, {
         imgPath: imgUrl +"s4.png",
+        sum: 0,
         name: "晚餐"
     }, {
         imgPath: imgUrl +"s5.png",
+        sum: 0,
         name: "汉堡披萨"
     }, {
         imgPath: imgUrl +"s6.png",
+        sum: 0,
         name: "速食简餐"
     }, {
         imgPath: imgUrl +"s7.png",
+        sum: 0,
         name: "买菜"
     }, {
         imgPath: imgUrl +"s8.png",
+        sum: 0,
         name: "大牌惠吃"
     }, {
         imgPath: imgUrl +"s9.png",
+        sum: 0,
         name: "炸鸡烤串"
     }, {
         imgPath: imgUrl +"s10.png",
-      name: "包子粥店"
+        sum: 0,
+        name: "包子粥店"
     }],
     storeType: [{
       name: "全部商家"

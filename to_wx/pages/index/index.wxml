@@ -40,7 +40,11 @@
             <view class="v-text2"><text class="v2-t">★{{item.grade}}</text> 月售{{item.orderSum}}</view>
             <view class="v-flex">
               <view class="v-text2">起送¥{{item.storeDetail.startFee}} 配送¥{{item.storeDetail.shippingFee}}</view>
-              <view class="v-text2">{{item.storeDetail.shippingTimeLength}}分钟 10km</view>
+              <view class="v-text2">
+                {{item.storeDetail.shippingTimeLength}}分钟 
+                <text wx:if="{{item.distance>=1000}}">{{tools.getFix(item.distance/1000.0)}}km</text>
+                 <text wx:if="{{item.distance<1000}}">{{item.distance}}m</text>
+              </view>
             </view>
             <view class="v-flex2">
               <text class="vf2b leftv" wx:for="{{item.list}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
