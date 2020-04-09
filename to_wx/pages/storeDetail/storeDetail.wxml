@@ -1,30 +1,37 @@
 <!--pages/storeDetail/storeDetail.wxml-->
 <scroll-view class="contain">
+<wxs src="./storeDetail.wxs" module="tools" />
+
   <!-- 蒙层 -->
-<view class="layer">
-    <view class="l-bottom">
+<view class="layer" wx:if="{{visible}}" bindtap="onclose">
+</view>
+<!-- 购物车 -->
+ <view class="l-bottom" wx:if="{{visible}}">
       <view class="lb-one">
         <view class="lbo-one">已选商品</view>
-        <view class="lbo-two">清空</view>
+        <view class="lbo-two" bindtap="clearCar">清空</view>
       </view>
-      <view class="lb-list" wx:for="{{2}}">
-        <view class="list-one">牛气冲填报</view>
+      <view class="lb-list" wx:for="{{cartList}}" ax:for-item="item" wx:for-index="index" wx:key="index">
+        <view class="list-one">{{item.name}}</view>
          <view class="list-three">
-          <image class="list-img" src="{{imgUrl}}subtract.png"></image>
-          <view class="list-text"> 1 </view>
-          <image class="list-img" src="{{imgUrl}}add.png"></image>
+          <image bindtap="subclist" data-index="{{index}}" class="list-img" src="{{imgUrl}}subtract.png"></image>
+          <view class="list-text"> {{item.sum}} </view>
+          <image class="list-img" bindtap="addclist" data-index="{{index}}" src="{{imgUrl}}add.png"></image>
         </view>
-        <view class="list-two">￥13.5</view>
+        <view class="list-two">￥{{tools.getFix(item.price*item.sum)}}</view>
       </view>
-    </view>
-</view>
+  </view>
+
+
+
+
 
   <view class="header">
     <image src="{{imgUrl}}tx.png"></image>
   </view>
   <view class="h-last">
-    <view class="title">肯德基宅急送（园区车缝... </view>
-    <view class="sdetail">评价4.4 月售138单 商家配送30分钟</view>
+    <view class="title">{{storeMsg.storeDetail.name}}</view>
+    <view class="sdetail">评价{{storeMsg.grade}} 月售{{storeMsg.orderSum}}单 商家配送{{storeMsg.storeDetail.shippingTimeLength}}分钟</view>
     <view class="sdetail " style="color:gray">
     公告：本店全部商品已经消毒，配送人员佩戴口罩
     </view>
@@ -45,41 +52,41 @@
     <image class="adsimg" src="{{imgUrl}}ads.jpg"></image>
     <!-- 滑动左 -->
     <scroll-view class="scroll-left">
-      <view class="sl-view {{index==vtype?'cover-sv':''}}" wx:for="{{typeList}}" bindtap="clicktype" data-type="{{index}}">
+      <view class="sl-view {{index==vtype?'cover-sv':''}}" wx:for="{{typeList}}" bindtap="clicktype" data-type="{{index}}" ax:for-item="item" wx:for-index="index" wx:key="index">
         {{item.name}}
       </view>
     </scroll-view>
     <!-- 滑动右 -->
     <scroll-view bindscroll="changeScroll" scroll-y="true"  scroll-top="{{scrolltop}}" class="scroll-right">
-      <view class="st-view" wx:for="{{goodsList}}">
+      <view class="st-view" wx:for="{{goodsList}}" ax:for-item="item" wx:for-index="index" wx:key="index">
           <view class="v-left">
             <image src="{{imgUrl}}fd3.jpg"></image>
           </view>
           <view class="v-right">
-            <view class="v-text1">{{item.name}}</view>
-            <view class="v-text2">主要原料：鸡肉</view>
+            <view class="v-text1">{{item.goods.name}}</view>
+            <view class="v-text2">{{item.goods.remark}}</view>
             <view class="v-flex">
-              <view class="v-text2">月售644份 好评率100%</view>
+              <view class="v-text2">月售{{item.ordersum}}份 好评率100%</view>
             </view>
              <view class="vsp">
-              <view class="vp">￥20.9起</view>
-              <image class="vpimg" src="{{imgUrl}}add.png"></image>
-              <view  class="vptext" > 1 </view>
-              <image class="vpimg" src="{{imgUrl}}subtract.png"></image>
+              <view class="vp">￥{{item.goods.price}}起</view>
+              <image bindtap="addCart" data-key="{{index}}"  data-dao="{{item}}" class="vpimg" src="{{imgUrl}}add.png"></image>
+              <view wx:if="{{item.sum!=0}}" class="vptext" > {{item.sum}} </view>
+              <image  bindtap="subCart" data-key="{{index}}" data-dao="{{item}}" wx:if="{{item.sum!=0}}" class="vpimg" src="{{imgUrl}}subtract.png"></image>
              </view>
           </view>
         </view>
     </scroll-view>
      <view class="bottom-v">
       <view class="bl">
-        <view class="bll" bindtap="onopen">
+        <view class="bll" bindtap="onopen" bindtap="onopen">
           <image src="{{imgUrl}}gwc.png"></image>
         </view>
-         <view class="blto">
-          2
+         <view class="blto" wx:if="{{allSum>0}}">
+          {{allSum}}
          </view>
-        <view style="font-size:1rem;margin-left:4rem;">￥25.8</view>
-        <view class="bltext">另需配送费5元</view>
+        <view style="font-size:1rem;margin-left:4rem;">￥{{allPrice}}</view>
+        <view class="bltext">另需配送费{{storeMsg.storeDetail.shippingFee}}元</view>
       </view>
       <view class="br">去结算</view>
     </view>

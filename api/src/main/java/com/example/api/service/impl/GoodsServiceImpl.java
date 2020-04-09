@@ -27,9 +27,10 @@ public class GoodsServiceImpl implements GoodService {
     @Autowired
     private OrderDeatilImpl orderDeatil;
 
+    //商店食物详细
     @Override
     public Object getGoodsList(int id) {
-        List<Goods> list=goods.findByStoreId(id);
+        List<Goods> list=goods.findByStoreIdOrderByTypeId(id);
         List<GoodsListDto> listNew=new ArrayList<>();
         for(int i=0;i<list.size();i++){
             GoodsListDto goodsDto=new GoodsListDto();
@@ -41,6 +42,7 @@ public class GoodsServiceImpl implements GoodService {
         return listNew;
     }
 
+    //商店食物类型
     @Override
     public Object getGoodsType(Long id) {
         return goodsType.findByStoreId(id);

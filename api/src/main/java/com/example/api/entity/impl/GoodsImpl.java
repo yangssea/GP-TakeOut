@@ -12,6 +12,6 @@ import java.util.List;
  */
 @Repository
 public interface GoodsImpl  extends JpaRepository<Goods, Long> {
-    List<Goods> findByStoreId(int id);
+    List<Goods> findByStoreIdOrderByTypeId(int id);
 
 }

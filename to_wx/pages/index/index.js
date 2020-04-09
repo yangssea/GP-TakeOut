@@ -181,9 +181,10 @@ create.Page(store, {
       hasUserInfo: true
     })
   },
-  goLink: function(){
+  goLink: function(event){
+    var data = JSON.stringify(event.currentTarget.dataset.entity); 
     wx.navigateTo({
-      url: "/pages/storeDetail/storeDetail"
+      url: "/pages/storeDetail/storeDetail?data="+data
     });
   }, 
   goLink1:function(){

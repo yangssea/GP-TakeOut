@@ -31,7 +31,7 @@
       </view>
     </view>
     <scroll-view>
-        <view class="st-view" bindtap="goLink" wx:for="{{storeList}}" ax:for-item="item" wx:for-index="index" wx:key="index">
+        <view class="st-view" data-entity="{{item}}" bindtap="goLink" wx:for="{{storeList}}" ax:for-item="item" wx:for-index="index" wx:key="index">
           <view class="v-left">
             <image src="{{imgPath+item.storeDetail.img}}"></image>
           </view>

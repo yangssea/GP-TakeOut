@@ -169,7 +169,7 @@ public class StoreDetailServiceImpl implements StoreDetailService {
                 List<Coupons> liatCou = couponsImpl.getByStoreId(list.get(i).getId());
                 storeDto.setList(liatCou);
                 //获取商品列表（limit 3）
-                List<Goods> listGoods = goodsImpl.findByStoreId(list.get(i).getId());
+                List<Goods> listGoods = goodsImpl.findByStoreIdOrderByTypeId(list.get(i).getId());
                 if(listGoods==null||listGoods.size()<3){
                     storeDto.setGList(listGoods);
                 }else{
