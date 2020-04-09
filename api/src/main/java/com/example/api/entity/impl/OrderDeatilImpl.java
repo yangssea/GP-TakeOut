@@ -1,6 +1,5 @@
 package com.example.api.entity.impl;
 
-import com.example.api.entity.Order;
 import com.example.api.entity.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -7,4 +7,6 @@ package com.example.api.service;
 public interface GoodService {
     Object getGoodsList(int id);
     Object getGoodsType(Long id);
+    Object getGrade(int id);
+    Object getEvaluation(int id, int type);
 }
