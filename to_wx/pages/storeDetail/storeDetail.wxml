@@ -95,43 +95,39 @@
   <view class="comment" wx:if="{{bview}}">
     <view class="commentc">
       <view class="cfrist">
-        4.4
+        {{avgGrade}}
       </view>
       <view class="csend">
         商家评分
         <view style="color:#e8c000">☆ ☆ ☆ ☆</view>
       </view>
       <view class="cthree">
-        味道<view>4.6</view>
+        食物<view>{{grade[0]}}</view>
       </view>
       <view class="cthree">
-        包装<view>4.8</view>
+        味道<view>{{grade[2]}}</view>
       </view>
       <view class="cfour">
-        配送<view>4.1</view>
+        配送<view>{{grade[1]}}</view>
       </view>
     </view>
     <view class="ctype">
-      <view style="background: #009dfe;color:white">全部4536</view>
-      <view>最新</view>
-      <view>好评36</view>
-      <view>差评36</view>
-      <view>有图23</view>
+      <view bindtap="changectype" data-type="{{index}}" wx:for="{{typeName}}" wx:for-index="index" class="{{cviews==index?'cback':''}}" wx:key="index">{{item}}</view>
     </view>
     <view class="content">
-        <view class="ct-block" wx:for="{{5}}">
+        <view class="ct-block" wx:for="{{commentList}}">
           <view>
             <view class="tx"></view>
             <view class="name">
               匿名用户 
               <view class="xt">☆ ☆ ☆ ☆ ☆ </view>
             </view>
-            <view class="time">2020-3-18</view>
+            <view class="time">{{item.to.time}}</view>
           </view>
           <view style="clear:both"></view>
-          <view class="contian-ct">你家的汤不错，哈哈哈。</view>
+          <view class="contian-ct">{{item.to.comment}}</view>
           <view class="reply">
-          商家回复：好评模板回复买家好评模板:1感谢亲的光临,亲的满意,就是我们最大的欣慰,最大的回报。小店会更加努力做好!
+          {{item.from.comment}}
           </view>
         </view>
     </view>
@@ -140,8 +136,8 @@
   <view class="firm" wx:if="{{cview}}">
     <view class="fone">
       <view class="foneo"> 配送信息</view>
-      <view class="fot">由商家配送·提纲配送，约三十分钟送达</view>
-      <view class="fot" style="margin-top:0.1rem;">配送费￥8</view>
+      <view class="fot">由商家配送·提纲配送，约{{storeMsg.storeDetail.shippingTimeLength}}分钟送达</view>
+      <view class="fot" style="margin-top:0.1rem;">配送费￥{{storeMsg.storeDetail.shippingFee}}</view>
     </view>
     <view class="fone">
       <view class="foneo"> 商家服务</view>
@@ -151,10 +147,10 @@
     <view class="f-msg">
         <wux-cell-group  style="font-size:0.8rem;">
             <wux-cell title="商家信息"></wux-cell>
-            <wux-cell title="Kfc"></wux-cell>
-            <wux-cell title="品类" extra="炸鸡汉堡"></wux-cell>
-            <wux-cell title="商家电话" extra="联系商家"></wux-cell>
-            <wux-cell title="地址" extra="苏州市鸡肉饭"></wux-cell>
+            <wux-cell title="{{storeMsg.storeDetail.name}}"></wux-cell>
+            <wux-cell title="品类" extra=""></wux-cell>
+            <wux-cell title="商家电话" extra="{{storeMsg.storeDetail.phone}}"></wux-cell>
+            <wux-cell title="地址" extra="{{storeMsg.storeDetail.address}}"></wux-cell>
         </wux-cell-group>
     </view>
   </view>

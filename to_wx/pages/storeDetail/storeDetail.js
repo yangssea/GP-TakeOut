@@ -18,6 +18,8 @@ Page({
      cview: false,
      vtype: 0,
      scrolltop: 0,
+     typeName:["全部 5628","最新 23","好评 10","差评 5","有图 23"],
+     cviews: 0,
      typeList:[],
     //食物列表
      goodsList:[],
@@ -32,7 +34,21 @@ Page({
     //总价
     allPrice: 0,
     //总量： 
-    allSum: 0
+    allSum: 0,
+    //商家评分
+    grade: [],
+    //评论列表
+    commentList: [],
+    ctype: 0,
+    avgGrade: 0.0
+
+  },
+  changectype: function(event){
+    var sum = event.currentTarget.dataset.type;
+    this.setData({
+      cviews: sum
+    })
+    this.getclist(this.data.storeMsg.storeDetail.id,sum);
   },
   onopen: function(){
     this.setData({
@@ -220,10 +236,62 @@ Page({
       goodsList: this.data.goodsList
     });
   },
+  //获取商店评分
+  getGrade: function(id){
+    var that = this;
+    api.findGrade({ id: id }).then((res) => {
+      var list = res.result.split(",");
+      that.setData({
+         grade: list,
+        avgGrade: ((parseFloat(list[0]) + parseFloat(list[1]) + parseFloat(list[2])) /3).toFixed(1)
+      });
+      
+      console.log(this.data.grade);
+    }, (error) => {
+      console.log(error);
+    });
+  },
+  //获取商店评论
+  getclist: function(id,type){
+    var that=this;
+    api.findComment({ id: id ,type: type}).then((res) => {
+      //结果整理
+      var list=res.result;
+      var listnew=[];
+      var view = true;
+      for(var i=0;i<list.length;i++){
+        for (var j = 0; j < list.length; j++) {
+          if(list[i].orderId==list[j].orderId&&i!=j){
+            for (var z = 0; z < listnew.length;z++){
+              if (list[i].orderId == listnew[z].to.orderId){
+                view=false;
+              }
+            }
+            if(view){
+              if (list[i].isReply==0){
+                listnew.push({ to: list[i], from: list[j] });
+              }else{
+                listnew.push({ to: list[j], from: list[i] });
+              }
+            }
+            view = true;
+          }
+        }
+      }
+      that.setData({
+        commentList: listnew
+      });
+      console.log(listnew);
+    }, (error) => {
+      console.log(error);
+    });
+  },
    /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getGrade(JSON.parse(options.data).storeDetail.id);
+    this.getclist(JSON.parse(options.data).storeDetail.id, this.data.ctype);
     this.setData({
       storeMsg: JSON.parse(options.data)
     });
@@ -236,6 +304,7 @@ Page({
     }, (error) => {
       console.log(error);
     });
+
     api.findType({ id: JSON.parse(options.data).storeDetail.id }).then((res) => {
       that.setData({
         typeList: res.result
@@ -244,49 +313,6 @@ Page({
       console.log(error);
     });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   /**
    * 用户点击右上角分享
    */
