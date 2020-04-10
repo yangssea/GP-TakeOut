@@ -3,7 +3,8 @@
       "wux-cell-group": "../../static/lib/cell-group/index",
       "wux-cell": "../../static/lib/cell/index",
       "wux-button": "../../static/lib/button/index",
-      "wux-popup": "../../static/lib/popup/index"
+      "wux-popup": "../../static/lib/popup/index",
+      "wux-toast": "../../static/lib/toast/index"
     
   }
 }

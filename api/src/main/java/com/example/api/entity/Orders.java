@@ -33,10 +33,14 @@ public class Orders {
     @Column(length = 255)
     private String address;
     @Column(length = 255)
+    private String remark;
+    @Column(length = 255)
+    private Long wareSum;
+    @Column(length = 255)
     private String deliveryMan;
     @Column(length = 255)
     private String deliveryManPhone;
-    //订单状态1.备餐中2.已配送3.已完成4.已取消
+    //订单状态0.待支付1.备餐中2.已配送3.已完成4.已取消
     @Column(length = 10)
     private int status;
 }

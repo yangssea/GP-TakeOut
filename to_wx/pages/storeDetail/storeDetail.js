@@ -1,5 +1,6 @@
 // pages/storeDetail/storeDetail.js
 import api from '../../service/storeDetailService.js'
+import { $wuxToast } from '../../static/lib/index'
 const app = getApp();
 
 Page({
@@ -8,19 +9,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-     imgUrl: app.globalData.imgUrl,
-     //三视图控制变量
-     a1: true,
-     a2: false,
-     a3: false,
-     aview:true,
-     bview: false,
-     cview: false,
-     vtype: 0,
-     scrolltop: 0,
-     typeName:["全部 5628","最新 23","好评 10","差评 5","有图 23"],
-     cviews: 0,
-     typeList:[],
+    imgUrl: app.globalData.imgUrl,
+    //三视图控制变量
+    a1: true,
+    a2: false,
+    a3: false,
+    aview:true,
+    bview: false,
+    cview: false,
+    vtype: 0,
+    scrolltop: 0,
+    typeName:["全部 5628","最新 23","好评 10","差评 5","有图 23"],
+    cviews: 0,
+    typeList:[],
     //食物列表
      goodsList:[],
     //列表长度计算
@@ -40,9 +41,32 @@ Page({
     //评论列表
     commentList: [],
     ctype: 0,
-    avgGrade: 0.0
+    avgGrade: 0.0,
+    toOrders: {}
 
   },
+  //跳转确定订单
+  toOrder: function(){
+    if (!this.data.cartList||this.data.cartList.length==0){
+      $wuxToast().show({
+        type: 'cancel',
+        duration: 1500,
+        color: '#fff',
+        text: '请选择商品',
+        success: () => console.log('已完成')
+      })
+    }else{
+      this.data.toOrders.storeMsg = this.data.storeMsg;
+      this.data.toOrders.list = this.data.cartList;
+      this.data.toOrders.price = this.data.allPrice;
+      var data = JSON.stringify(this.data.toOrders);
+      wx.navigateTo({
+        url: '/pages/confirmOrder/confirmOrder?data='+data,
+      })
+    }
+   
+  },
+  //评价类型改变
   changectype: function(event){
     var sum = event.currentTarget.dataset.type;
     this.setData({
@@ -122,7 +146,6 @@ Page({
         sum++;
       }
     }
-    console.log(this.data.glength)
   },
   //获取食物列表
   getList: function(){
@@ -162,7 +185,6 @@ Page({
       cartList: this.data.cartList,
       allPrice: price.toFixed(1)
     })
-    console.log(this.data.cartList);
   },
   //点击取消加入购物车
   subCart: function (event){
@@ -191,7 +213,6 @@ Page({
       allSum: this.data.cartList.length,
       allPrice: price.toFixed(1)
     })
-    console.log(this.data.cartList);
   },
   //减少cart数量
   subclist: function(event){
@@ -246,7 +267,6 @@ Page({
         avgGrade: ((parseFloat(list[0]) + parseFloat(list[1]) + parseFloat(list[2])) /3).toFixed(1)
       });
       
-      console.log(this.data.grade);
     }, (error) => {
       console.log(error);
     });
@@ -281,7 +301,7 @@ Page({
       that.setData({
         commentList: listnew
       });
-      console.log(listnew);
+    
     }, (error) => {
       console.log(error);
     });

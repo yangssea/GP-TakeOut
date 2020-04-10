@@ -40,7 +40,7 @@ public class UserAddress {
     private String longitude;
     @Column(length = 255)
     private String remark;
-
+    public UserAddress(){}
     public UserAddress(@NotNull Long userId, @NotEmpty @NotNull String name, @NotNull @Pattern(regexp = "^[0-9]*$") String phone, @NotNull String address, @NotNull String latitude, @NotNull String longitude, String remark) {
         this.userId = userId;
         this.name = name;
