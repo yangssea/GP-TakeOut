@@ -1,0 +1,77 @@
+<!--pages/oDetail/oDetail.wxml-->
+<scroll-view class="contain">
+  <view class="header">
+      <view class="hf" bindtap="onClick1">{{address}}
+      <image src="{{imgUrl}}wright.png"></image>
+      </view>
+      <view class="hs">{{name}}（先生）{{phone}}</view> 
+  </view>
+<wux-select id="wux-select1" />
+<wux-select id="wux-select2" />
+<wux-toast id="wux-toast" />
+   <view class="center">
+      <view class="f-detail">
+        <view class="fd-left">
+          <image  class="fsimg" src="{{imgUrl}}fd1.jpg"></image>
+          <view  class="fdtext weight"> {{orderMsg.storeMsg.storeDetail.name}}</view>
+        </view>
+        <view class="fd-right">
+          <image src="{{imgUrl}}wright.png"></image>
+        </view>
+      </view>
+
+      <view class="f-detail" wx:for="{{orderMsg.list}}">
+        <view class="fd-left">
+          <text>{{item.name}}  X{{item.sum}}</text>
+        </view>
+        <view class="fd-right">
+            ￥{{item.price}}
+        </view>
+      </view>
+         
+      <view class="f-detail">
+        <view class="fd-left">
+          <text>配送费</text>
+        </view>
+        <view class="fd-right" style="margin-top:-0.4rem;">
+            <text>{{orderMsg.storeMsg.storeDetail.shippingFee}} </text>
+            
+        </view>
+      </view>
+
+      <view class="f-detail">
+        <view class="fd-left">
+          <text>红包/抵用券</text>
+        </view>
+        <view bindtap="onclick2" class="fd-right" style="margin-top:-0.4rem;">
+            <text>{{couview}} </text>
+            <image src="{{imgUrl}}wright.png"></image>
+        </view>
+      </view>
+
+       <view class="f-detail" style="border:none">
+        <view class="fd-left">
+          <image class="fsimg" src="{{imgUrl}}phone.png"></image>
+          <view class="fstext">   联系商家</view>
+        </view>
+        <view class="fd-right">
+            总计￥{{allPrice}}
+        </view>
+      </view>
+   </view>
+   <view class="s-footer">
+      <view class="s-detail weight">配送信息</view>
+      <wux-cell-group>
+           <wux-cell hover-class="none">
+                <wux-input clear label="餐具份数" value="{{wareSum}}" type="number" placeholder="请输入份数" />
+            </wux-cell>
+          <wux-cell hover-class="none">
+                <wux-input clear  value="{{reamrk}}" label="备注信息" placeholder="请输入备注" />
+            </wux-cell>
+        </wux-cell-group>
+   </view>
+    <view class="bottom">
+      <view class="bleft">￥32</view>
+      <view class="bright" bindtap="submitOrder">去支付</view>
+    </view>
+</scroll-view>

@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "wux-cell-group": "../../static/lib/cell-group/index",
+    "wux-cell": "../../static/lib/cell/index",
+    "wux-select": "../../static/lib/select/index",
+    "wux-input": "../../static/lib/input/index",
+    "wux-toast": "../../static/lib/toast/index"
+  },
+  "navigationBarTitleText": "确定订单"
+}

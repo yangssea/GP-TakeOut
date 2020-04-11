@@ -1,0 +1,64 @@
+/* pages/findAdd/findAdd.wxss */
+.contian{
+  background: #f7f7f7;
+}
+.header{
+  height: 2rem;
+  background: #009dfe; 
+}
+.find{
+  background: #009dfe; 
+}
+.wux-search-bar {
+  background-color: #009dfe !important; 
+}
+.wux-search-bar::before{
+  border: none !important;
+}
+.newadd{
+  padding: 0.5rem;
+  padding-top: 0.8rem;
+  height: 1rem;
+  font-size: 0.8rem;
+  color: grey;
+}
+.nscontain{
+  padding: 0.5rem;
+  height: 1.2rem;
+  font-size: 0.8rem;
+  color: grey;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+}
+.slist{
+  padding: 0.5rem;
+  height: 2.2rem;
+  font-size: 0.8rem;
+  background: white;
+  border: 1px solid #f7f7f7;
+}
+.stext{
+  margin-top: 0.1rem;
+  color: gray;
+  font-size: 0.8rem;
+}
+.bottom{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 4rem;
+  font-size: 0.8;
+  background: white;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #009dfe; 
+}
+.bottom image{
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.3rem;
+  margin-right: 0.3rem;
+}

@@ -1,0 +1,25 @@
+<!--pages/findAdd/findAdd.wxml-->
+<scroll-view class="contian">
+  <view class="header">
+     <wux-search-bar placeholder="搜索地址"  clear="flase" maxlength="8"  class="find" bindtap='onChangeAddress'/>
+  </view>
+  <view style="clear:both"></view>
+  <view class="newadd">
+    当前地址
+  </view>
+  <view class="nscontain" >
+    <view>{{$.address}}</view>
+    <view style="color:#009dfe" bindtap="freshLocal">重新定位</view>
+  </view>
+  <view class="newadd">
+    收货地址
+  </view>
+  <view class="slist" wx:for="{{aList}}" bindtap='changeAdd' data-list="{{item}}">
+    <view>{{item.address}}</view>
+     <view class="stext">{{item.name}}（先生）{{item.phone}}</view>
+  </view>
+  <view class="bottom" bindtap='onChangeAddress1'>
+    <image src="{{imgUrl}}add.png"></image>
+    新增地址
+  </view>
+</scroll-view> 

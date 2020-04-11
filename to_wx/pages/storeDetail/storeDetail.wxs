@@ -1,0 +1,19 @@
+var sub = function (val, start, end) {
+  if (val.length == 0 || val == undefined) {
+    return;
+  }
+  if (val.length >= end) {
+    return val.substring(start, end);
+  } else {
+    return val;
+  }
+}
+var length = function (val) {
+  return val.length;
+}
+var getFix = function (val) {
+  return val.toFixed(1);
+}
+module.exports.sub = sub;
+module.exports.length = length;
+module.exports.getFix = getFix;

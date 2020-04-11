@@ -1,4 +1,5 @@
 // pages/order/order.js
+import api from '../../service/orderService.js'
 const app = getApp();
 Page({
 
@@ -6,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrl: app.globalData.imgUrl
+    imgUrl: app.globalData.imgUrl,
+    orderList: []
 
   },
   goLink: function () {
@@ -19,7 +21,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    api.findAll({ id: wx.getStorageSync('userId')}).then((res) => {
+      that.setData({
+        orderList: res.result
+      })
+      console.log(res.result);
+    }, (error) => {
+      console.log(error);
+    });
   },
 
   /**
