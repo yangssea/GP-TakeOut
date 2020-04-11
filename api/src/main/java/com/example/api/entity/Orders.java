@@ -39,6 +39,12 @@ public class Orders {
     @Column(length = 255)
     private String deliveryMan;
     @Column(length = 255)
+    private String deliveryFee;
+    @Column(length = 255)
+    private String couponstype;
+    @Column(length = 255)
+    private String couponsMoney;
+    @Column(length = 255)
     private String deliveryManPhone;
     //订单状态0.待支付1.备餐中2.已配送3.已完成4.已取消
     @Column(length = 10)

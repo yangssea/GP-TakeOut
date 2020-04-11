@@ -16,7 +16,7 @@ public class OrderDetail {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     @Column(length = 255)
-    private int OrderId;
+    private int orderId;
     @Column(length = 255)
     private String priceName;
     @Column(length = 255)
