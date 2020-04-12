@@ -1,10 +1,12 @@
 package com.example.api.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -28,7 +30,7 @@ public class Orders {
     @Column(length = 255)
     private String img;
     @Column(length = 255)
-    @Temporal(TemporalType.TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date OrderTime;
     @Column(length = 255)
     private String address;
