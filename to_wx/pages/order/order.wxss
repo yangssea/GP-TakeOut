@@ -1,4 +1,7 @@
 /* pages/order/order.wxss */
+.containers{
+  min-height: 40rem; 
+}
 .o-block{
   margin: 0.5rem;
   padding-top: 1rem; 
@@ -64,8 +67,8 @@
 }
 .block{
   background: white;
-  height: 9.5rem;
   border-radius: 0.3rem;
+  padding-bottom: 3rem;
 }
 .containers{
   background: #f7f7f7;

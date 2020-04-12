@@ -5,7 +5,6 @@ import Toast from '../../static/vant/toast/toast'
 import util from '../../utils/pattern.js'
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -13,10 +12,12 @@ Page({
       name: '',
       phone: '',
       address: '',
-      remarks: '',
+      remark: '',
       latitude: '',
       longitude: '',
       aView: false,
+      item: {},
+      id: null
   },
   //选择地址
   onChangeAddress() {
@@ -43,9 +44,13 @@ Page({
   onSubmit() {
     const { getFieldsValue, getFieldValue, setFieldsValue } = $wuxForm()
     const value = getFieldsValue();
+    console.log(value);
     value.address=this.data.address;
     value.latitude=this.data.latitude;
     value.longitude=this.data.longitude;
+    if(this.data.id!=null){
+      value.id=this.data.id;
+    }
     value.userId = wx.getStorageSync('userId');
     console.log('Wux Form Submit \n', value);
     if(util.checkPhone(value.phone)&&value.name&&value.address){
@@ -70,7 +75,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var data=JSON.parse(options.data);
+    if(options.data){
+      this.setData({
+        id: data.id,
+        item: data,
+        name: data.name,
+        phone:data.phone,
+        address: data.address,
+        remark: data.remark,
+        latitude: data.latitude,
+        longitude: data.longitude
+      })
+    }
   },
 
   /**

@@ -8,12 +8,15 @@ Page({
    */
   data: {
     imgUrl: app.globalData.imgUrl,
-    orderList: []
+    orderList: [],
+    height: ''
 
   },
-  goLink: function () {
+  goLink: function (event) {
+    var index=event.currentTarget.dataset.index;
+    var data=JSON.stringify(this.data.orderList[index]);
     wx.navigateTo({
-      url: "/pages/oDetail/oDetail"
+      url: "/pages/oDetail/oDetail?data="+data
     });
   }, 
 
@@ -23,13 +26,23 @@ Page({
   onLoad: function (options) {
     var that=this;
     api.findAll({ id: wx.getStorageSync('userId')}).then((res) => {
+      var data=res.result;
+      for(var i=0;i<data.length;i++){
+        var date1 = new Date(data[i].orders.orderTime).toJSON();
+        var date = new Date(+new Date(date1) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+        data[i].orders.orderTime=date;
+      }
       that.setData({
-        orderList: res.result
+        orderList: data
       })
       console.log(res.result);
     }, (error) => {
       console.log(error);
     });
+    this.setData({
+      height: wx.getSystemInfoSync().windowHeight
+    })
+    console.log(wx.getSystemInfoSync().windowHeight,"高度");
   },
 
   /**

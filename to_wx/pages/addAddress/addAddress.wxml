@@ -7,29 +7,29 @@
             <wux-field name="name" initialValue="{{name}}">
                 <wux-input value="name" label="联系人" placeholder="姓名"/>
             </wux-field>
-
         </wux-cell>
       </wux-cell-group>
-      <wux-cell-group title="phone" initialValue="{{phone}}">
+      <wux-cell-group title="phone" >
         <wux-cell hover-class="none">
-            <wux-field name="phone">
+            <wux-field name="phone" initialValue="{{phone}}">
                 <wux-input  type="number" value="phone" label="电话" placeholder="手机电话"/>
             </wux-field>
         </wux-cell>
       </wux-cell-group>
       <wux-cell-group title="address" bindtap="onChangeAddress" >
-        <wux-cell hover-class="none" initialValue="{{address}}">
+        <wux-cell hover-class="none">
             <wux-field name="address" >
                <text>地址</text>
-               <text wx:if="{{!aView}}" style="margin-left:3.8rem;color:gray;">请选择地址</text>
-                <text wx:if="{{aView}}" style="margin-left:3.8rem;">{{address}}</text>
+               <text wx:if="{{!aView&&!id}}" style="margin-left:3.8rem;color:gray;">请选择地址</text>
+                  
+                <text wx:if="{{aView||id}}" style="margin-left:3.8rem;">{{address}}</text>
             </wux-field>
         </wux-cell>
       </wux-cell-group>
      
       <wux-cell-group title="reamrk">
-        <wux-cell hover-class="none" initialValue="{{remark}}">
-            <wux-field name="remark" >
+        <wux-cell hover-class="none" >
+            <wux-field name="remark" initialValue="{{remark}}">
                 <wux-input value="reamrk" label="补充说明" placeholder="详细地址、门牌街道"/>
             </wux-field>
         </wux-cell>

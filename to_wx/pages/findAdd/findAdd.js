@@ -28,6 +28,12 @@ create.Page(store, {
       url: "/pages/index/index"
     });
   },
+  update(event){
+    var data = JSON.stringify(event.currentTarget.dataset.item);
+    wx.navigateTo({
+      url: "/pages/addAddress/addAddress?data="+data
+    });
+  },
   onChangeAddress1(){
       wx.navigateTo({
         url: "/pages/addAddress/addAddress"

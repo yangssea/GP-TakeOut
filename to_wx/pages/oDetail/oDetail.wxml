@@ -16,19 +16,20 @@
       <view class="f-detail">
         <view class="fd-left">
           <image  class="fsimg" src="{{imgUrl}}fd1.jpg"></image>
-          <view  class="fdtext weight"> 华莱士-肯德基（1）</view>
+          <view  class="fdtext weight">  {{list.storeName}}</view>
+
         </view>
         <view class="fd-right">
           <image src="{{imgUrl}}wright.png"></image>
         </view>
       </view>
 
-      <view class="f-detail" wx:for="{{3}}">
+      <view class="f-detail" wx:for="{{list.orderDetail}}" wx:for-index="index" wx:key="index">
         <view class="fd-left">
-          <text>超值单人餐</text>
+          <text>{{item.priceName}} x {{item.sum}}</text>
         </view>
         <view class="fd-right">
-            ￥15
+            ￥{{item.price}}
         </view>
       </view>
 
@@ -38,15 +39,15 @@
           <view class="fstext">   联系商家</view>
         </view>
         <view class="fd-right">
-            实付￥45
+            实付￥{{list.orders.price}}
         </view>
       </view>
    </view>
    <view class="s-footer">
       <view class="s-detail weight">配送信息</view>
-      <view class="s-detail">送达时间：惊哭机房</view>
-      <view class="s-detail">送货地址：贵州省非人防发放人</view>
-      <view class="s-detail">配送方式：车定位费</view>
+      <view class="s-detail">送达时间： </view>
+      <view class="s-detail">送货地址：{{list.orders.address}}</view>
+      <view class="s-detail">配送方式：骑手配送</view>
       <view class="s-detail">
         <view style="float:left">配送骑士：</view>
         <view style="float:right" class="fstext">   联系骑士 | 宋外麦</view>
@@ -56,8 +57,8 @@
 
     <view class="s-footer">
       <view class="s-detail weight">订单信息</view>
-      <view class="s-detail">订单号： 4848465484</view>
-      <view class="s-detail">发货方式：贵州省非人防发放人</view>
-      <view class="s-detail">下单时间：车定位费</view>
+      <view class="s-detail">订单号： {{list.orders.id}}</view>
+      <view class="s-detail">发货方式：商家发货</view>
+      <view class="s-detail">下单时间：{{list.orders.orderTime}}</view>
    </view>
 </scroll-view>

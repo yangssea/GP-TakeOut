@@ -14,9 +14,10 @@
   <view class="newadd">
     收货地址
   </view>
-  <view class="slist" wx:for="{{aList}}" bindtap='changeAdd' data-list="{{item}}">
-    <view>{{item.address}}</view>
-     <view class="stext">{{item.name}}（先生）{{item.phone}}</view>
+  <view class="slist" wx:for="{{aList}}">
+    <view  bindtap='changeAdd' data-list="{{item}}">{{item.address}}</view>
+     <view  bindtap='changeAdd' data-list="{{item}}" class="stext">{{item.name}}（先生）{{item.phone}}</view>
+     <image src="{{imgUrl}}update.png" data-item="{{item}}" bindtap="update" class="upImg"></image>
   </view>
   <view class="bottom" bindtap='onChangeAddress1'>
     <image src="{{imgUrl}}add.png"></image>

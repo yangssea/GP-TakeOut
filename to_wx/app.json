@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/findAdd/findAdd",
     "pages/index/index",
     "pages/confirmOrder/confirmOrder",
     "pages/oDetail/oDetail",
     "pages/storeDetail/storeDetail",
     "pages/order/order",
     "pages/addAddress/addAddress",
-    "pages/findAdd/findAdd",
     "pages/storeFInd/index",
     "pages/my/my"
   ],
