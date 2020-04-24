@@ -1,0 +1,47 @@
+<!--pages/my/my.wxml-->
+<scroll-view class="contains">
+  <view class="header">
+    <view class="h-left">
+      <view class="hf1">骑单车的贼</view>
+      <view class="hf2">在忙也要记得吃饭呦~</view>
+    </view>
+    <view class="h-right">
+      <image src="{{imgUrl}}tx.png"></image>
+    </view
+    >
+  </view>
+  <view class="model">
+    <view class="m-left">
+      <view class="ml-b">
+          <view>今日派单数</view>
+         <image src="{{imgUrl}}hd1.png"></image>
+      </view>
+      <view style="clear:both;"></view>
+      <view class="ml-t">
+        <text style="color:#eb501a">2</text>
+        <text style="font-size:0.6rem;color:gray;">个</text>
+      </view>
+    </view>
+    <view class="m-right">
+      <view class="ml-b">
+          <view>今日派单数</view>
+         <image src="{{imgUrl}}hd2.png"></image>
+      </view>
+      <view style="clear:both;"></view>
+      <view class="ml-t">
+        <text style="font-size:0.6rem;color:gray;">￥0</text>
+      </view>
+    </view>
+  </view>
+  <view style="clear:both"></view>
+  <view class="ads">
+    <image src="{{imgUrl}}ads1.png"> </image>
+  </view>
+  <view class="mylist">
+    <view class="lbs" wx:for="{{myList}}" wx:for-index="key" wx:key="key">
+      <image class="lb1" src="{{imgUrl}}{{item.path}}"></image>
+      <view class="lb2">{{item.name}}</view>
+      <image class="lb3" src="{{imgUrl}}wright.png"></image>
+    </view>
+  </view>
+</scroll-view>

@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
+
 import store from './store'
 
 /*引入axios插件*/
 import axios from 'axios'
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false
-
+Vue.use(Antd);
 // 全局路由构造函数，判断是否登录和要跳转到页面
 router.beforeEach((to, from, next) => {
   if (to.matched.some(m => m.meta.requireAuth)) {    // 需要登录
@@ -17,7 +20,7 @@ router.beforeEach((to, from, next) => {
       let token = window.localStorage.token;
       if (token === 'null' || token === '' || token === undefined){
         next({path: '/login'})
-        Toast({ message: '检测到您还未登录,请登录后操作！', duration: 1500 })
+        /*Toast({ message: '检测到您还未登录,请登录后操作！', duration: 1500 })*/
       }
     } else {
       next()

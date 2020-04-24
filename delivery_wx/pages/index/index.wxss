@@ -1,0 +1,88 @@
+/**index.wxss**/
+.contain{
+  background: #f7f7f7;
+}
+.header{
+  background: #009dfe;
+}
+.wux-tabs{
+  background:#009dfe !important;
+}
+.wux-tabs__tab--balanced.wux-tabs__tab--current{
+  color: white !important;
+}
+.wux-tabs__tab{
+ color: lightgrey !important;
+}
+.center{
+  margin: 0.7rem;
+  background: white;
+  padding: 0.5rem;
+}
+.center-i{
+  float: left;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.2rem;
+}
+.center-l{
+  float: left;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.center-r{
+  float: right;
+  color: gray;
+  font-size:0.8rem;
+}
+.c2{
+  margin-top:2rem;
+  padding-bottom: 1.5rem; 
+}
+.qc2{
+  margin-top:2rem;
+ 
+}
+.c2-l{
+  float: left;
+  font-size: 0.7rem;
+  color: gray;
+}
+.c2-r{
+  float: right;
+  height: 1.8rem;
+  width: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -0.6rem;
+  font-size: 0.8rem;
+  border: 1px solid lightgray;
+  border-radius: 0.3rem;
+
+}
+.text1{
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+.text2{
+  margin-top: 0.3rem;
+  color: gray;
+}
+.yellow{
+ color: #009dfe;
+}
+.stitle{
+  font-size:1rem;
+  font-weight: 600;
+}
+.sblock{
+  background: #f7f7f7;
+  padding: 0.7rem;
+  height: 2.5rem;
+  border-radius: 0.3rem;
+  margin-top: 0.5rem;
+}
+.b-p{
+  font-size: 0.8rem; 
+}
