@@ -1,2 +1,5 @@
-<!--pages/map/map.wxml-->
-<text>pages/map/map.wxml</text>
+<view>
+  <button bindtap="change">
+    打开配送地图
+  </button>
+</view>
