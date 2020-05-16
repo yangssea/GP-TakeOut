@@ -82,6 +82,22 @@ public class GoodsServiceImpl implements GoodService {
             return evaluationImpl.getList(id);
         }
     }
+
+    @Override
+    public Object findAll(int id,Long type) {
+        return goods.findsAll(id,type);
+    }
+
+    @Override
+    public Object save(Goods good) {
+        return goods.save(good);
+    }
+
+    @Override
+    public Object delete(int id) {
+        goods.deletes(id);
+        return "success";
+    }
     //获取商店评论与回复
 
 }

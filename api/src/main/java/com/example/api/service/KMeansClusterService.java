@@ -1,201 +1,167 @@
-package com.example.api.service;
-
-import java.awt.*;
+/*
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
+public class KMeansRun {
+    private int kNum;                             //簇的个数
+    private int iterNum = 10;                     //迭代次数
+
+    private int iterMaxTimes = 100000;            //单次迭代最大运行次数
+    private int iterRunTimes = 0;                 //单次迭代实际运行次数
+    private float disDiff = (float) 0.01;         //单次迭代终止条件，两次运行中类中心的距离差
+
+    private List<float[]> original_data =null;    //用于存放，原始数据集  
+    private static List<Point> pointList = null;  //用于存放，原始数据集所构建的点集
+    private DistanceCompute disC = new DistanceCompute();
+    private int len = 0;                          //用于记录每个数据点的维度
+
+    public KMeansRun(int k, List<float[]> original_data) {
+        this.kNum = k;
+        this.original_data = original_data;
+        this.len = original_data.get(0).length;
+        //检查规范
+        check();
+        //初始化点集。
+        init();
+    }
+
+    */
 /**
- * @author yzx
- * @date 2020/4/28  11:06
- */
-public class KMeansClusterService {
-
-    private int k;//簇的个数
-    private int num = 100000;//迭代次数
-    private List<double> datas;//原始样本集
-    private String address;//样本集路径
-    private List<point> data = new ArrayList<point>();
-    private AbstractDistance distance = new AbstractDistance() {
-        @Override
-        public double getDis(Point p1, Point p2) {
-            //欧几里德距离
-            return Math.sqrt(Math.pow(p1.getX() - p2.getX(), 2) + Math.pow(p1.getY() - p2.getY(), 2));
-        }
-    };
-
-    public KMeansCluster(int k, int num, String address) {
-        this.k = k;
-        this.num = num;
-        this.address = address;
-    }
-
-    public KMeansCluster(int k, String address) {
-        this.k = k;
-        this.address = address;
-    }
-
-    public KMeansCluster(int k, List<double> datas) {
-        this.k = k;
-        this.datas = datas;
-    }
-
-    public KMeansCluster(int k, int num, List<double> datas) {
-        this.k = k;
-        this.num = num;
-        this.datas = datas;
-    }
+     * 检查规范
+     *//*
 
     private void check() {
-        if (k == 0)
+        if (kNum == 0){
             throw new IllegalArgumentException("k must be the number > 0");
-
-        if (address == null && datas == null)
+        }
+        if (original_data == null){
             throw new IllegalArgumentException("program can't get real data");
-    }
-
-    /**
-     * 初始化数据
-     *
-     * @throws java.io.FileNotFoundException
-     */
-    public void init() throws FileNotFoundException {
-        check();
-        //读取文件，init data
-        //处理原始数据
-        for (int i = 0, j = datas.size(); i < j; i++)
-            data.add(new Point(i, datas.get(i), 0));
-    }
-
-    /**
-     * 第一次随机选取中心点
-     *
-     * @return
-     */
-    public Set<point> chooseCenter() {
-        Set<point> center = new HashSet<point>();
-        Random ran = new Random();
-        int roll = 0;
-        while (center.size() < k) {
-            roll = ran.nextInt(data.size());
-            center.add(data.get(roll));
         }
-        return center;
     }
 
-    /**
-     * @param center
-     * @return
-     */
-    public List<cluster> prepare(Set<point> center) {
-        List<cluster> cluster = new ArrayList<cluster>();
-        Iterator<point> it = center.iterator();
-        int id = 0;
-        while (it.hasNext()) {
-            Point p = it.next();
-            if (p.isBeyond()) {
-                Cluster c = new Cluster(id++, p);
-                c.addPoint(p);
-                cluster.add(c);
-            } else
-                cluster.add(new Cluster(id++, p));
+    */
+/**
+     * 初始化数据集，把数组转化为Point类型。
+     *//*
+
+    private void init() {
+        pointList = new ArrayList<Point>();
+        for (int i = 0, j = original_data.size(); i < j; i++){
+            pointList.add(new Point(i, original_data.get(i)));
         }
-        return cluster;
     }
 
-    /**
-     * 第一次运算，中心点为样本值
-     *
-     * @param center
-     * @param cluster
-     * @return
-     */
-    public List<cluster> clustering(Set<point> center, List<cluster> cluster) {
-        Point[] p = center.toArray(new Point[0]);
-        TreeSet<distence> distence = new TreeSet<distence>();//存放距离信息
-        Point source;
-        Point dest;
-        boolean flag = false;
-        for (int i = 0, n = data.size(); i < n; i++) {
-            distence.clear();
-            for (int j = 0; j < center.size(); j++) {
-                if (center.contains(data.get(i)))
-                    break;
+    */
+/**
+     * 随机选取中心点，构建成中心类。
+     *//*
 
-                flag = true;
-                // 计算距离
-                source = data.get(i);
-                dest = p[j];
-                distence.add(new Distence(source, dest, distance));
-            }
-            if (flag == true) {
-                Distence min = distence.first();
-                for (int m = 0, k = cluster.size(); m < k; m++) {
-                    if (cluster.get(m).getCenter().equals(min.getDest()))
-                        cluster.get(m).addPoint(min.getSource());
-
+    private Set<Cluster> chooseCenterCluster() {
+        Set<Cluster> clusterSet = new HashSet<Cluster>();
+        Random random = new Random();
+        for (int id = 0; id < kNum; ) {
+            Point point = pointList.get(random.nextInt(pointList.size()));
+            // 用于标记是否已经选择过该数据。
+            boolean flag =true;
+            for (Cluster cluster : clusterSet) {
+                if (cluster.getCenter().equals(point)) {
+                    flag = false;
                 }
             }
-            flag = false;
-        }
-
-        return cluster;
-    }
-
-    /**
-     * 迭代运算，中心点为簇内样本均值
-     *
-     * @param cluster
-     * @return
-     */
-    public List<cluster> cluster(List<cluster> cluster) {
-        //        double error;
-        Set<point> lastCenter = new HashSet<point>();
-        for (int m = 0; m < num; m++) {
-            //            error = 0;
-            Set<point> center = new HashSet<point>();
-            // 重新计算聚类中心
-            for (int j = 0; j < k; j++) {
-                List<point> ps = cluster.get(j).getMembers();
-                int size = ps.size();
-                if (size < 3) {
-                    center.add(cluster.get(j).getCenter());
-                    continue;
-                }
-                // 计算距离
-                double x = 0.0, y = 0.0;
-                for (int k1 = 0; k1 < size; k1++) {
-                    x += ps.get(k1).getX();
-                    y += ps.get(k1).getY();
-                }
-                //得到新的中心点
-                Point nc = new Point(-1, x / size, y / size, false);
-                center.add(nc);
+            // 如果随机选取的点没有被选中过，则生成一个cluster
+            if (flag) {
+                Cluster cluster =new Cluster(id, point);
+                clusterSet.add(cluster);
+                id++;
             }
-            if (lastCenter.containsAll(center))//中心点不在变化，退出迭代
-                break;
-            lastCenter = center;
-            // 迭代运算
-            cluster = clustering(center, prepare(center));
-            //            for (int nz = 0; nz < k; nz++) {
-            //                error += cluster.get(nz).getError();//计算误差
-            //            }
         }
-        return cluster;
+        return clusterSet;
     }
 
-    /**
-     * 输出聚类信息到控制台
-     *
-     * @param cs
-     */
-    public void out2console(List<cluster> cs) {
-        for (int i = 0; i < cs.size(); i++) {
-            System.out.println("No." + (i + 1) + " cluster:");
-            Cluster c = cs.get(i);
-            List<point> p = c.getMembers();
-            for (int j = 0; j < p.size(); j++) {
-                System.out.println("\t" + p.get(j).getX() + " ");
+    */
+/**
+     * 为每个点分配一个类！
+     *//*
+
+    public void cluster(Set<Cluster> clusterSet){
+        // 计算每个点到K个中心的距离，并且为每个点标记类别号
+        for (Point point : pointList) {
+            float min_dis = Integer.MAX_VALUE;
+            for (Cluster cluster : clusterSet) {
+                float tmp_dis = (float) Math.min(disC.getEuclideanDis(point, cluster.getCenter()), min_dis);
+                if (tmp_dis != min_dis) {
+                    min_dis = tmp_dis;
+                    point.setClusterId(cluster.getId());
+                    point.setDist(min_dis);
+                }
             }
-            System.out.println();
+        }
+        // 新清除原来所有的类中成员。把所有的点，分别加入每个类别
+        for (Cluster cluster : clusterSet) {
+            cluster.getMembers().clear();
+            for (Point point : pointList) {
+                if (point.getClusterid()==cluster.getId()) {
+                    cluster.addPoint(point);
+                }
+            }
         }
     }
-}
+
+    */
+/**
+     * 计算每个类的中心位置！
+     *//*
+
+    public boolean calculateCenter(Set<Cluster> clusterSet) {
+        boolean ifNeedIter = false;
+        for (Cluster cluster : clusterSet) {
+            List<Point> point_list = cluster.getMembers();
+            float[] sumAll =new float[len];
+            // 所有点，对应各个维度进行求和
+            for (int i = 0; i < len; i++) {
+                for (int j = 0; j < point_list.size(); j++) {
+                    sumAll[i] += point_list.get(j).getlocalArray()[i];
+                }
+            }
+            // 计算平均值
+            for (int i = 0; i < sumAll.length; i++) {
+                sumAll[i] = (float) sumAll[i]/point_list.size();
+            }
+            // 计算两个新、旧中心的距离，如果任意一个类中心移动的距离大于dis_diff则继续迭代。
+            if(disC.getEuclideanDis(cluster.getCenter(), new Point(sumAll)) > disDiff){
+                ifNeedIter = true;
+            }
+            // 设置新的类中心位置
+            cluster.setCenter(new Point(sumAll));
+        }
+        return ifNeedIter;
+    }
+
+    */
+/**
+     * 运行 k-means
+     *//*
+
+    public Set<Cluster> run() {
+        Set<Cluster> clusterSet= chooseCenterCluster();
+        boolean ifNeedIter = true;
+        while (ifNeedIter) {
+            cluster(clusterSet);
+            ifNeedIter = calculateCenter(clusterSet);
+            iterRunTimes ++ ;
+        }
+        return clusterSet;
+    }
+
+    */
+/**
+     * 返回实际运行次数
+     *//*
+
+    public int getIterTimes() {
+        return iterRunTimes;
+    }
+}*/
