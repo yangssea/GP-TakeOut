@@ -149,7 +149,7 @@ create.Page(store, {
     var month = now.getMonth() + 1;  
     var day = now.getDate();   
     order.orders={
-      OrderTime:year+"-"+month+"-"+day,
+      OrderTime:year+"-"+month+"-"+day+" "+"12:00:00",
       address :this.store.data.address,
       price : this.data.allPrice,
       storeId : this.data.orderMsg. storeMsg.storeDetail.id,
@@ -162,6 +162,7 @@ create.Page(store, {
       remark: this.data.remark
     }
     var odata = this.data.orderMsg.list;
+    var that=this;
     for (var i = 0; i < odata.length;i++){
       var goods = {
          OrderId: "0",
@@ -179,12 +180,50 @@ create.Page(store, {
         color: '#fff',
         text: '支付成功等待配送',
         success: () => {
+          that.changeWeb();
+          that.pushMsg();
           wx.switchTab({
             url: '/pages/index/index',
           });
         }
+
       });
       
+    }, (error) => {
+      console.log(error);
+    });
+  },
+  //websocket
+  changeWeb: function () {
+    console.log("???")
+    let socketOpen = false
+    wx.connectSocket({
+      url: 'ws://192.168.43.236:8090/orderSocket/socket/21',
+      fail: function (e) {
+        console.log(e);
+      }
+    })
+    wx.onSocketOpen(function (res) {
+      socketOpen = true
+
+    })
+    //接收数据
+    wx.onSocketMessage(function (data) {
+      if (data.data === "连接成功" || data.data == "stock") {
+        console.log(data.data);
+        return false
+      } else {
+        console.log(data);
+        console.log(data.data);
+
+      }
+    })
+  },
+  //发送请求
+  pushMsg: function(){
+    let data = {message: "push"};
+    api2.push(data).then((res) => {
+      console.log(res);
     }, (error) => {
       console.log(error);
     });

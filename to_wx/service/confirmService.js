@@ -9,7 +9,12 @@ const findcou = function (data) {
 const save = function (data) {
   return api.request(url + 'order/save', JSON.stringify(data), "post", 'application/json');
 }
+//websocket推送
+const push = function (data) {
+  return api.request(url + 'orderSocket/socket/push/21', data, "get");
+}
 module.exports = {
   findcou,
-  save
+  save,
+  push
 }

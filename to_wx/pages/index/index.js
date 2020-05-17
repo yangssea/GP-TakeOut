@@ -113,6 +113,8 @@ create.Page(store, {
       wx.getLocation({
         success: function(res) {
           console.log(res);
+          let lat = res.latitude;
+          let lng = res.longitude;
           wx.request({
             url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=dzYLWMF8oLGLIh4z5fb9N8EejGijf5PM&coordtype=wgs84ll&location=' + res.latitude + ',' + res.longitude + '&output=json',
             method: 'get',
@@ -123,7 +125,7 @@ create.Page(store, {
               that.data.lat = res.data.result.longitude;
               //获取商店
               console.log(res.data.result.location.lng)
-              api.findAll({ page: 1, type: 0, lat: res.data.result.location.lat, lng: res.data.result.location.lng}).then((res) => {
+              api.findAll({ page: 1, type: 0, lat:lat, lng: lng}).then((res) => {
                 that.setData({
                   storeList: res.result
                 })

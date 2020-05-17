@@ -2,7 +2,6 @@
 import api from '../../service/storeDetailService.js'
 import { $wuxToast } from '../../static/lib/index'
 const app = getApp();
-
 Page({
 
   /**

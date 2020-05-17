@@ -6,6 +6,7 @@
 <view class="layer" wx:if="{{visible}}" bindtap="onclose">
 </view>
 <!-- 购物车 -->
+
  <view class="l-bottom" wx:if="{{visible}}">
       <view class="lb-one">
         <view class="lbo-one">已选商品</view>

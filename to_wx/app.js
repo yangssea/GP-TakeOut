@@ -28,9 +28,7 @@ App({
                 try {
                   // 同步接口立即写入
                   wx.setStorageSync('token', res.data.token);
-                  console.log('写入value2成功');
                   wx.setStorageSync('userId', res.data.userId);
-                  console.log('写入value2成功');
                   wx.authorize({
                     scope: 'scope.userLocation',
                     success() {
