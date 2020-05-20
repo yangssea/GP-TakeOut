@@ -12,7 +12,10 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     s1: true,
     s2: false,
-    s3: false
+    s3: false,
+    list: [],
+    list1: [],
+    list2: [],
   },
   //事件处理函数
   bindViewTap: function() {
@@ -42,7 +45,65 @@ Page({
       })
     }
   },
+  getAll: function () {
+    wx.request({
+      url: 'http://192.168.43.236:8090/order/getAll',
+      data:{
+        id: 0
+      },
+      success: res=> {
+        console.log(res.data)
+        let rs = res.data.result;
+        this.data.list=[];
+        this.data.list1 = [];
+        this.data.list2 = [];
+        for(var i=0;i<rs.length;i++){
+          if (rs[i].orders.status==1){
+            this.data.list.push(rs[i])
+          }else if (rs[i].orders.status == 2) {
+            this.data.list1.push(rs[i])
+          }else if (rs[i].orders.status == 3) {
+            this.data.list2.push(rs[i])
+          }
+        }
+        this.setData({
+          list: this.data.list
+        });
+        this.setData({
+          list1: this.data.list1
+        });
+        this.setData({
+          list2: this.data.list2
+        });
+      }
+    })
+  },
+  news: function (event) {
+    var id = event.currentTarget.dataset.id;
+    var st = event.currentTarget.dataset.st;
+    wx.request({
+      url: 'http://192.168.43.236:8090/order/update?st='+st+'&id='+id+'',
+      success: res => {
+       console.log("neworder");
+        this.socket();
+        this.getAll();
+      }
+    })
+  }, 
+  socket: function () {
+    wx.request({
+      url: 'http://192.168.43.236:8090/orderSocket/socket/push/21',
+      data: {
+        message: "push"
+      },
+      success: res => {
+        console.log("neworder");
+      }
+    })
+  }, 
   onLoad: function () {
+    this.getAll();
+    //一下为系统代码
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

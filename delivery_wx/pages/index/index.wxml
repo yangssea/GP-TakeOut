@@ -9,30 +9,30 @@
     </view>
    <!-- 待抢单 -->
   <view wx:if="{{s1}}">
-    <view class="center" wx:for="{{6}}">
+    <view class="center" wx:for="{{list}}">
       <view>
         <image class="center-i" src="../../static/image/order.png"></image>
         <view class="center-l">
-        <text style="font-size:0.9rem;">#</text>38</view>
+        <text style="font-size:0.9rem;">#</text>{{item.orders.id}}</view>
         <view class="center-r">商家待备餐</view>
       </view>
       <view style="clear:both"></view>
       <view class="text1">
-        取：松泽家园四区-四栋2402（10km）
+        取：{{item.orders.address}}（10km）
       </view>
       <view class="text2" style="color:#009dfe">
-       送：小明 18852986398(10km)
+       送：{{item.address}}(10km)
       </view>
       <view class="qc2">
-        <wux-button block disabled size="small"  type="royal">抢单</wux-button>        
+        <wux-button block  size="small" bindtap="news"  data-st="2" data-id="{{item.orders.id}}"  type="royal">抢单</wux-button>        
         </view>
     </view>
   </view>
 
   <!-- 待收货 -->
   <view wx:if="{{s2}}">
-    <view class="center">
-      <view>
+    <view class="center" wx:for="{{list1}}">
+      <view >
         <image class="center-i" src="../../static/image/order.png"></image>
         <view class="stitle">
           58分钟内送达
@@ -40,43 +40,43 @@
       </view>
       <view style="clear:both"></view>
       <view class="text1">
-        店铺：嵩山肯德基
+        店铺：{{item.name}}
       </view>
       <view class="text2">
-       送达： 宋泽家园四区东（188529866148）
+       送达： {{item.orders.address}}（{{item.orders.phone}}）
       </view>
       <view class="sblock">
         <view class="b-p">
-        <text style="color:gray" >备注：</text> 加糖布加拉贾，湖是多少第三方</view>
+        <text style="color:gray" >备注：</text>{{item.orders.remark}}</view>
         <view class="b-p" style=" margin-top:0.3rem">
          <text style="color:gray">顾客：</text>暂无哦</view>
          
       </view>
-       <wux-button block disabled size="small" type="balanced">上报到店</wux-button>     
+       <wux-button block  size="small"  bindtap="news"  data-st="3" data-id="{{item.orders.id}}" type="balanced">上报到店</wux-button>     
   </view>
   </view>
 
   <!-- 待送达 -->
-  <view wx:if="{{s3}}">
-     <view class="center">
+  <view wx:if="{{s3}}" >
+     <view class="center"  wx:for="{{list2}}">
       <view>
         <image class="center-i" src="../../static/image/order.png"></image>
         <view class="center-l">
-        <text style="font-size:0.9rem;">#</text>38</view>
+        <text style="font-size:0.9rem;">#</text>{{item.orders.id}}</view>
         <view class="center-r">骑手派件中</view>
       </view>
       <view style="clear:both"></view>
       <view class="text1">
-        松泽家园四区-四栋2402
+        {{item.address}}
       </view>
       <view class="text2">
-       小明 18852986398
+       刘xx 18852986398
       </view>
       <view class="c2">
         <view class="c2-l">
         骑手距离收货地<text class="yellow">1.4km</text> 
          | 预计<text class="yellow">16：00</text> 送达</view>
-        <view class="c2-r">联系卖家</view>
+        <view class="c2-r" bindtap="news"  data-st="4" data-id="{{item.orders.id}}" >确认收货</view>
       </view>
     </view>
   </view>

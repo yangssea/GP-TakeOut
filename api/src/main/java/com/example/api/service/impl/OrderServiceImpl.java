@@ -5,6 +5,7 @@ import com.example.api.entity.Orders;
 import com.example.api.entity.StoreDetail;
 import com.example.api.entity.dto.OrderDto;
 import com.example.api.entity.dto.OrderRDto;
+import com.example.api.entity.dto.OrdersDvDto;
 import com.example.api.entity.impl.CouponsImpl;
 import com.example.api.entity.impl.OrderDeatilImpl;
 import com.example.api.entity.impl.OrdersImpl;
@@ -22,6 +23,7 @@ import java.util.List;
  * @author yzx
  * @date 2020/4/11  10:08
  */
+
 @Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
@@ -66,5 +68,32 @@ public class OrderServiceImpl implements OrderService {
             rlist.add(orderRDto);
         }
         return rlist;
+    }
+
+    @Override
+    public Object findSid(int id) {
+        return orders.findByStoreId(id);
+    }
+
+    @Override
+    public Object update(int st,int id) {
+        return orders.updates(st,id);
+    }
+
+    @Override
+    public Object findDv(int id) {
+        List<Orders> list=orders.findAll();
+        List<OrdersDvDto> rList=new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            OrdersDvDto ordersDvDto=new OrdersDvDto();
+            ordersDvDto.setOrders(list.get(i));
+            StoreDetail sd=storeDetailImpl.findById(list.get(i).getStoreId());
+            ordersDvDto.setAddress(sd.getAddress());
+            ordersDvDto.setLat(sd.getLatitude());
+            ordersDvDto.setLng(sd.getLongitude());
+            ordersDvDto.setName(sd.getName());
+            rList.add(ordersDvDto);
+        }
+        return rList;
     }
 }

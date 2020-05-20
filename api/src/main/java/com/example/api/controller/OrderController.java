@@ -1,5 +1,6 @@
 package com.example.api.controller;
 
+import com.example.api.config.token.PassToken;
 import com.example.api.config.token.UserLoginToken;
 import com.example.api.entity.dto.OrderDto;
 import com.example.api.service.impl.OrderServiceImpl;
@@ -42,4 +43,26 @@ public class OrderController {
         return ResponseBuilder.success(res);
     }
 
+    //查询店铺订单
+    @GetMapping("findSid")
+    @PassToken
+    public Object findSid(@RequestParam int id) throws IllegalAccessException {
+        Object res=orderService.findSid(id);
+        return ResponseBuilder.success(res);
+    }
+
+    //修改店铺订单
+    @GetMapping("update")
+    @PassToken
+    public Object update(@RequestParam int st,@RequestParam int id) throws IllegalAccessException {
+        Object res=orderService.update(st,id);
+        return ResponseBuilder.success(res);
+    }
+    //查询店铺订单
+    @GetMapping("getAll")
+    @PassToken
+    public Object getAll(@RequestParam int id) throws IllegalAccessException {
+        Object res=orderService.findDv(id);
+        return ResponseBuilder.success(res);
+    }
 }

@@ -37,6 +37,10 @@ public class Orders {
     @Column(length = 255)
     private String remark;
     @Column(length = 255)
+    private String lat;
+    @Column(length = 255)
+    private String lng;
+    @Column(length = 255)
     private Long wareSum;
     @Column(length = 255)
     private String deliveryMan;

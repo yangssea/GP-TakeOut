@@ -25,4 +25,5 @@ public interface GoodsImpl  extends JpaRepository<Goods, Long> {
     @Transactional
     @Query("delete from Goods h where h.id=:id")
     int deletes(@Param("id") int id);
+
 }
